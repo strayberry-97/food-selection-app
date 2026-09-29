@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'Cardo';
+    src: url('./fonts/Cardo/Cardo-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Silkscreen';
+    src: url('./fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Mea Culpa';
+    src: url('./fonts/Mea_Culpa/MeaCulpa-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    -webkit-font-smoothing: antialiased;
+
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Cardo', serif;
+
+    background-image: url('./imgs/bg_flowers.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+button{
+    all: unset;
+
+    display: flex;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    align-self: stretch;
+    background-color: #FFFFFF;
+    box-shadow: 0 -1px 7.6px 3px rgba(0, 0, 0, 0.25) inset;
+
+    font-family: 'Cardo', serif;
+    color: #6a6a6a;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.title-bar{
+    height: 46px;
+    background-image: url('./imgs/title_lace.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    -webkit-app-region: drag;
+}
+
+
+#minimize, #close {
+    -webkit-app-region: no-drag;
+
+    height: 22px;
+    width: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    font-family: 'Silkscreen', monospace;
+    font-size: 23px;
+
+    color: #6a6a6a;
+    cursor: pointer;
+
+    border: 1px solid #6A6A6A;
+    background-color: #d9d9d9;
+    box-shadow: none;
+
+    padding-bottom: 2px;
+}
+
+#minimize{
+    position: absolute;
+    top: 12px;
+    left: 46px;
+}
+
+#close{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.window{
+    display: flex;
+    flex-direction: row;
+
+    padding-left: 12px;
+    padding-right: 35px;
+    margin-bottom: 13px;
+    gap: 35px;
+
+    height: 348px;
+}
+
+.sidebar{
+    width: 197px;
+    border: 1px solid #5D5D5D;
+    background: #D9D9D9;
+}
+
+.menu{
+    margin-top: 47px;
+    margin-left: 12px; 
+    width: 173px;
+    margin-right: 12px;
+    border: 1px solid #5D5D5D;
+}
+
+.menu button{
+    width: 100%;
+    border-top: 1px solid #5D5D5D;
+}
+
+.menu button:first-of-type{
+    border-top: none;
+}
+
+#menu-svg{
+    position: absolute;
+    left: 86px;
+    top: 53px;
+    height: 52px;
+}
+
+#lanterns{
+    position: absolute;
+    top: -4px;
+    left: 209px;
+    width: 116px;
+}
+
+h1{
+    font-family: 'Mea Culpa', cursive ;
+    font-size: 46px;
+    font-weight: 400;
+}
+
+#main-card{
+    background-color: #d9d9d9;
+    display: flex;
+    width: 394px;
+    height: 209px;
+
+
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 46px;
+    margin-bottom: 12px;
+
+    box-shadow: 0 -1px 7.6px 3px rgba(0, 0, 0, 0.25) inset;
+    border: 1px solid #5D5D5D;
+}
+
+.pick-button{
+    width: 394px;
+    height: 58px;
+    background-color: #A4A3A3;
+    color: #fff;
+    border: 1px solid #5D5D5D;
+}
+
+#main-screen-frame{
+    position: absolute;
+    left: 499px;
+    top: 35px;
+    width: 190px;
+}
+
+#main-screen-menu-line{
+    position: absolute;
+    top: 209px;
+    left: 17px;
+
+
+    width: 186px;
+    height: 1px;
+
+    background-color: #5d5d5d;
+}

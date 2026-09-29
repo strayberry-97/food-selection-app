@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>What are we eating today?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="title-bar">
+      <div class="window-buttons">
+        <button id="close">x</button>
+        <button id="minimize">–</button>
+      </div>
+      <img src="./imgs/lanterns.png" id="lanterns">
+      <img src="./imgs/frame.png" id="main-screen-frame">
+    </div>
+    <div class="window">
+      <aside class="sidebar">
+        <img src="./svg/Menu.svg" id="menu-svg">
+        <div class="menu">
+          <button>home</button>
+          <button>history</button>
+          <button>preferences</button>
+        </div>
+        <div id="main-screen-menu-line"></div>
+      </aside>
+
+      <main class="main-content">
+        <div id="main-card">
+          <h1>What are we eating?</h1>
+        </div>
+        <button class="pick-button">pick my meal ✦</button>
+        <script src="renderer.js"></script>
+      </main>
+    </div>
+    
+  </body>
+</html>

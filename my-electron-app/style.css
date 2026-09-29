@@ -198,3 +198,132 @@ h1{
 
     background-color: #5d5d5d;
 }
+
+
+/* ---------- CRT EFFECT ---------- */
+
+@keyframes flicker {
+    0%   { opacity: 0.02; }
+    10%  { opacity: 0.04; }
+    20%  { opacity: 0.02; }
+    30%  { opacity: 0.06; }
+    40%  { opacity: 0.03; }
+    50%  { opacity: 0.05; }
+    60%  { opacity: 0.02; }
+    70%  { opacity: 0.04; }
+    80%  { opacity: 0.03; }
+    90%  { opacity: 0.05; }
+    100% { opacity: 0.02; }
+}
+
+@keyframes textShadow {
+    0% {
+        text-shadow:
+            0.4px 0 1px rgba(0, 30, 255, 0.25),
+            -0.4px 0 1px rgba(255, 0, 80, 0.15);
+    }
+
+    10% {
+        text-shadow:
+            1.2px 0 1px rgba(0, 30, 255, 0.25),
+            -1.2px 0 1px rgba(255, 0, 80, 0.15);
+    }
+
+    20% {
+        text-shadow:
+            0.2px 0 1px rgba(0, 30, 255, 0.2),
+            -0.2px 0 1px rgba(255, 0, 80, 0.12);
+    }
+
+    30% {
+        text-shadow:
+            1.4px 0 1px rgba(0, 30, 255, 0.25),
+            -1.4px 0 1px rgba(255, 0, 80, 0.15);
+    }
+
+    40% {
+        text-shadow:
+            0.5px 0 1px rgba(0, 30, 255, 0.2),
+            -0.5px 0 1px rgba(255, 0, 80, 0.12);
+    }
+
+    50% {
+        text-shadow:
+            0.1px 0 1px rgba(0, 30, 255, 0.15),
+            -0.1px 0 1px rgba(255, 0, 80, 0.1);
+    }
+
+    60% {
+        text-shadow:
+            1px 0 1px rgba(0, 30, 255, 0.25),
+            -1px 0 1px rgba(255, 0, 80, 0.15);
+    }
+
+    70% {
+        text-shadow:
+            0.3px 0 1px rgba(0, 30, 255, 0.2),
+            -0.3px 0 1px rgba(255, 0, 80, 0.12);
+    }
+
+    80% {
+        text-shadow:
+            1.2px 0 1px rgba(0, 30, 255, 0.25),
+            -1.2px 0 1px rgba(255, 0, 80, 0.15);
+    }
+
+    90% {
+        text-shadow:
+            0.2px 0 1px rgba(0, 30, 255, 0.2),
+            -0.2px 0 1px rgba(255, 0, 80, 0.12);
+    }
+
+    100% {
+        text-shadow:
+            0.4px 0 1px rgba(0, 30, 255, 0.25),
+            -0.4px 0 1px rgba(255, 0, 80, 0.15);
+    }
+}
+
+.crt {
+    position: relative;
+    animation: textShadow 1.6s infinite;
+}
+
+/* subtle screen flicker */
+.crt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(18, 16, 16, 0.05);
+
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    animation: flicker 0.2s infinite;
+}
+
+/* scanlines + very subtle RGB tint */
+.crt::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.06) 50%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.02),
+            rgba(0, 255, 0, 0.01),
+            rgba(0, 0, 255, 0.02)
+        );
+
+    background-size: 100% 2px, 3px 100%;
+
+    z-index: 2;
+    pointer-events: none;
+}

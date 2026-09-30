@@ -15,7 +15,7 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile('index.html')
+  win.loadFile('history.html')
 }
 
 ipcMain.on('minimize-window', (event) => {

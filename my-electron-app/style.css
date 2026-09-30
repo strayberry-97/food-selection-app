@@ -327,3 +327,78 @@ h1{
     z-index: 2;
     pointer-events: none;
 }
+
+#history-main-content{
+    flex: 1;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#history-main-content::-webkit-scrollbar{
+    display: none;
+}
+
+.scroll-track{
+
+    width: 23px;
+    height: 100%;
+
+    position: relative;
+
+    background: #fff;
+    border: 1px solid #5d5d5d;
+
+}
+
+.scroll-thumb {
+    position: absolute;
+
+    top: 2px;
+    left: 2px;
+
+    width: 17px;
+
+    height: 10px;
+
+    background: #ddd;
+
+    border: 1px solid #222;
+
+    box-sizing: border-box;
+
+    cursor: grab;
+}
+
+.scroll-thumb:active {
+    cursor: grabbing;
+}
+
+.history-card p {
+    font-family: 'Silkscreen', fantasy;
+    font-size: 16px;
+    margin-block: 0px;
+}
+
+.history-card-meal{
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: row;
+    padding-inline: 13px;
+    padding-block: 13px;
+    border: 1px solid #5d5d5d;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.rating img {
+    height: 17px;
+    width: 17px;
+}

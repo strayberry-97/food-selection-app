@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>What are we eating today?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="crt">
+    <div class="title-bar">
+      <div class="window-buttons">
+        <button id="close">x</button>
+        <button id="minimize">–</button>
+      </div>
+    </div>
+    <div class="window">
+      <aside class="sidebar">
+        <img src="./svg/Menu.svg" id="menu-svg">
+        <div class="menu">
+          <button>home</button>
+          <button>history</button>
+          <button>preferences</button>
+        </div>
+        <div id="main-screen-menu-line"></div>
+      </aside>
+
+      <main id="history-main-content">
+        <div class="history-card">
+            <p>DATE: <span class="order-date">01.01.2026</span></p>
+            <div class="history-card-meal">
+                <span class="meal-name">Çiġ köfte from McDonald’s</span>
+                <span class="rating">
+                    <img src="./svg/star-unfilled.svg">
+                    <img src="./svg/star-unfilled.svg">
+                    <img src="./svg/star-unfilled.svg">
+                    <img src="./svg/star-unfilled.svg">
+                    <img src="./svg/star-unfilled.svg">
+                </span>
+            </div>
+        </div>
+        
+        
+        
+        
+      </main>
+        <div class="scroll-track" id="scrollTrack">
+            <div class="scroll-thumb" id="scrollThumb"></div>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

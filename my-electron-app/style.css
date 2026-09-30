@@ -390,6 +390,7 @@ h1{
     border: 1px solid #5d5d5d;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 17px;
 }
 
 .rating{

@@ -50,3 +50,53 @@ if (!content || !track || !thumb) {
     document.addEventListener("DOMContentLoaded", scheduleUpdate);
     scheduleUpdate();
 }
+
+const ratings = document.querySelectorAll('.rating');
+
+ratings.forEach(rating =>{
+    const stars = rating.querySelectorAll('.star');
+    let currentRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener("click", ()=> {
+            currentRating = Number(star.dataset.rating);
+
+            stars.forEach(s => {
+                if (Number(s.dataset.rating) <= currentRating){
+                    s.src = "./svg/star-filled.svg";
+                } else {
+                    s.src = "./svg/star-unfilled.svg";
+                }
+            })
+        })
+
+        star.addEventListener('mouseenter', () =>{
+            const hoverRating = Number(star.dataset.rating);
+
+            stars.forEach(s =>{
+                if (Number(s.dataset.rating) <= hoverRating){
+                    s.src = "./svg/star-filled.svg";
+                } else {
+                    s.src = "./svg/star-unfilled.svg";
+                }
+            })
+        })
+    })
+    rating.addEventListener('mouseleave', () =>{
+        stars.forEach(s =>{
+            if (Number(s.dataset.rating) <= currentRating){
+                s.src = "./svg/star-filled.svg";
+            }else{
+                s.src = "./svg/star-unfilled.svg";
+            }
+        })
+    })
+})
+
+document.getElementById('homeButton').addEventListener('click', () =>{
+    window.location.href = 'index.html';
+})
+
+document.getElementById("historyButton").addEventListener("click", () => {
+    window.location.href = "history.html";
+});

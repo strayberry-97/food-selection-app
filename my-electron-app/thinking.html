@@ -15,33 +15,31 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="crt">
+    <img src="./imgs/lace-bow.png" id="lace-bow">
     <div class="title-bar">
       <div class="window-buttons">
         <button id="close">x</button>
         <button id="minimize">–</button>
       </div>
-      <img src="./imgs/lanterns.png" id="lanterns">
-      <img src="./imgs/frame.png" id="main-screen-frame">
     </div>
     <div class="window">
       <aside class="sidebar">
         <img src="./svg/Menu.svg" id="menu-svg">
         <div class="menu">
-          <button id="homeButton">home</button>
-          <button id="historyButton">history</button>
+          <button id="homeButton" onclick="window.location.href='index.html'">home</button>
+          <button id="historyButton" onclick="window.location.href='history.html'">history</button>
           <button id="preferencesButton">preferences</button>
         </div>
         <div id="main-screen-menu-line"></div>
       </aside>
 
-      <main class="main-content">
-        <div id="main-card">
-          <h1>What are we eating?</h1>
+      <main id="thinking-main-content">
+        <div>
+            Council is thinking
+            <img src="./svg/progress-bar.svg">
         </div>
-        <button class="pick-button" id="pickButton">pick my meal ✦</button>
-        <script src="renderer.js"></script>
       </main>
     </div>
-    
+    <script src="renderer.js"></script>
   </body>
 </html>

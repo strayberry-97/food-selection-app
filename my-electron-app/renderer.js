@@ -100,3 +100,7 @@ document.getElementById('homeButton').addEventListener('click', () =>{
 document.getElementById("historyButton").addEventListener("click", () => {
     window.location.href = "history.html";
 });
+
+document.getElementById("pickButton").addEventListener("click", () => {
+    window.location.href = "thinking.html";
+});

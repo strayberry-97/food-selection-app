@@ -403,3 +403,38 @@ h1{
     height: 17px;
     width: 17px;
 }
+
+#lace-bow{
+    position: absolute;
+    top: 0px;
+    left: 341px;
+    height: 407px;
+}
+
+#thinking-main-content{
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    width: 393px;
+    height: 267px;
+    border: 1px solid #5d5d5d;
+    box-shadow: 0 -1px 7.6px 3px rgba(0, 0, 0, 0.25) inset;
+
+    font-family: 'Mea Culpa', cursive;
+    font-size: 46px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 23px;;
+}
+
+#thinking-main-content img{
+    width: 278px;
+}
+
+#thinking-main-content div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

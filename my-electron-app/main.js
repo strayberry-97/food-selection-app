@@ -8,6 +8,7 @@ const createWindow = () => {
     height: 408,
     frame: false,
     resizable: false,
+    alwaysOnTop: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -15,7 +16,7 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile('history.html')
+  win.loadFile('result.html')
 }
 
 ipcMain.on('minimize-window', (event) => {

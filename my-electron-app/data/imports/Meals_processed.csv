@@ -1,0 +1,91 @@
+meal_id,restaurant_id,name,description,price,category,Beef,Burger,Chicken,Dessert,Dörüm,Köfte,Pasta,Pilaf,Potatoes,Salad,Snacks,Soup
+1,1,Sporcu Pilavı,"Rice pilaf with chickpeas, shredded chicken. Served with salad and pickles",432,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+2,1,Chicken Rice,Prepared with chickpea rice (250 gr.) and chicken (80 gr.). Served with salad and pickles.,360,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+3,1,Sautéed Chicken Over Rice,"Chickpea rice pilaf, sauteéd chicken. Served with salad and pickles.",384,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+4,1,Chickpea Rice,Chickpea rice pilaf. Served with salad and pickles.,288,Pilaf,0,0,0,0,0,0,0,1,0,0,0,0
+5,1,Roasted Meat on Rice,"250 grams of rice pilaf with chickpeas, 80 grams of roasted meat. Served with salad and pickles.",600,"Pilaf, Beef",1,0,0,0,0,0,0,1,0,0,0,0
+6,1,Spicy Chicken Over Special Rice,"Chickpea rice pilaf, spicy chicken. Served with salad and pickles.",384,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+7,1,Chicken with Barbecue Sauce on Rice,"Rice pilaf, chicken. Served with salad and pickles.",396,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+8,1,Chicken with Curry Sauce on Rice,"Curry sauce, rice pilaf. Served with salad and pickles.",396,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+9,1,Chicken Sauté & Roasted Meat & Bean Casserole,"Prepared with chickpea rice (250 gr.), sauteéd chicken (50 gr.), roasted beef (50 gr.), and baked beans in a casserole (50 gr.). Served with salad and pickles.",528,"Pilaf, Chicken, Beef",1,0,1,0,0,0,0,1,0,0,0,0
+10,1,Chicken & Roasted & Bean Casserole,"Chickpea pilaf (250 gr.), chicken (50 gr.), roasted beef (50 gr.), beans (50 gr.). Served with salad and pickles.",540,"Pilaf, Chicken, Beef",1,0,1,0,0,0,0,1,0,0,0,0
+11,1,Süper ikili-2,"Chickpea pilaf (250 gr. ), beans (50 gr.), chicken (50 gr.). Served with salad and pickles.",408,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+12,1,Süper ikili-3,"Chickpea pilaf (250 gr. ), beans (50 gr.), roasted beef (50 gr.). Served with salad and pickles.",492,"Pilaf, Beef",1,0,0,0,0,0,0,1,0,0,0,0
+13,1,Süper ikili Paket,"Chickpea pilaf (250 gr. ), sauteéd chicken (50 gr.), roasted beef (50 gr.). Served with salad and pickles.",492,"Pilaf, Chicken, Beef",1,0,1,0,0,0,0,1,0,0,0,0
+14,1,Süper ikili-1,"Chickpea pilaf (250 gr.), roasted beef (50 gr.), chicken (50 gr.). Served with salad and pickles.",480,"Pilaf, Chicken, Beef",1,0,1,0,0,0,0,1,0,0,0,0
+15,2,Kadınbudu Köfte & Napoliten Soslu Makarna,"120 gr. kadınbudu köfte, 200 gr. arrabbiata sos ile harmanlanmış makarna",360.25,"Pasta, Köfte",0,0,0,0,0,1,1,0,0,0,0,0
+16,2,Köri Soslu Tavuk & Zerdeçallı Makarna,"250 gr. özel köri sos, sebzelerle marine edilmiş tavuk. 150 gr. zerdeçallı makarna",300,"Chicken, Pasta",0,0,1,0,0,0,1,0,0,0,0,0
+17,2,Ballı Sarımsaklı Tavuk & Basmati Pilavı,Bal ve sarımsakla hazırlanan özel Kore sosunda pişirilmiş tavuk etleri (175 gr.). Basmati pirinç pilavı (200 gr.) ile servis edilir.,324.75,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
+18,2,Mercimek Çorbası,Taze sebzelerle tatlandırılmış kırmızı mercimek çorbası (300 gr.),103.5,Soup,0,0,0,0,0,0,0,0,0,0,0,1
+19,2,Yayla Çorbası,Geleneksel yayla çorbası 300 gr.,141.75,Soup,0,0,0,0,0,0,0,0,0,0,0,1
+20,2,Domatesli Bezelye & Pirinç Pilavı,"Domates, patates, havuç, bezelye yemeği (250 gr.), pirinç pilavı (175 gr.) ile servis edilir.",224,Pilaf,0,0,0,0,0,0,0,1,0,0,0,0
+21,2,Etli Biber Dolması & Zerdeçallı Makarna,"Dana kıymayla hazırlanan geleneksel biber dolması (250 gr.), zerdeçallı burgu makarnayla (175 gr.) servis edilir.",267.5,"Pasta, Beef",1,0,0,0,0,0,1,0,0,0,0,0
+22,2,Falafel & Zerdeçallı Makarna,"Susamlı nohut falafel (150 gr.), fesleğenli zerdeçallı burgu makarna (200 gr.)",150,Pasta,0,0,0,0,0,0,1,0,0,0,0,0
+23,2,Kıymalı Yeşil Mercimek & Patates Püresi,"Geleneksel kıymalı yeşil mercimek (250 gr.) ve kremalı patates püresi (200 gr.), tek tabakta sunulur.",223.25,"Beef, Potatoes",1,0,0,0,0,0,0,0,1,0,0,0
+24,2,Ankara Tava,"Arpa şehriye, mevsim sebzeleri",258.25,"Pilaf, Beef",1,0,0,0,0,0,0,1,0,0,0,0
+25,2,Spaghetti Bolognese,"Spagetti makarna (230 gr.), dana kıyma, taze domatesler, fesleğen ile hazırlanmış geleneksel bolognese sos (200 gr.)",295.25,"Pasta, Beef",1,0,0,0,0,0,1,0,0,0,0,0
+26,2,Tatlı Ekşi Soslu Tavuk & Basmati Pilavı,"Tatlı ekşi sos, ananas, biberle tatlandırılmış tavuklar (250 gr.), basmati pilav (175 gr.)",311.5,"Chicken, Pilaf",0,0,1,0,0,0,0,1,0,0,0,0
+27,2,Rus Salatası,Rus salatası (175 gr.),73.25,Salad,0,0,0,0,0,0,0,0,0,1,0,0
+28,2,Çikolatalı Panna Cotta,200 gr.,231.75,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+29,2,Fırın Sütlaç,150 gr.,165.25,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+30,2,Nerolu Mag,200 gr.,226.5,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+31,3,Baharatlı Acılı Mayonezli Tenders Dürüm,"Tenders, Baharatlı Acılı Mayonez, Salata",295,"Dürüm, Chicken",0,0,1,0,1,0,0,0,0,0,0,0
+32,3,Tatlı Turşulu Mayonezli Tenders Dürüm,"Tenders, tatlı turşulu mayonez, domates, salata",295,"Dürüm, Chicken",0,0,1,0,1,0,0,0,0,0,0,0
+33,3,Adana Usulü Köfte Dürüm,"Adana Usulü Köfte Eti, Soğan, Domates, Salata",395,"Dürüm, Beef",1,0,0,0,1,0,0,0,0,0,0,0
+34,3,McCrispy,"McCrispy meat, lemon mayonnaise sauce, salad",375,"Chicken, Burger",0,1,1,0,0,0,0,0,0,0,0,0
+35,3,Triple Cheeseburger,"3 Adet Burger Köftesi, 2 Adet Peynir, Hardal, Ketçap, Soğan, Turşu",465,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+36,3,McChicken,"McChicken meat, mayonnaise, salad",335,"Burger, Chicken",0,1,1,0,0,0,0,0,0,0,0,0
+37,3,Crispy Chicken Burger,"Crispy chicken, mayonnaise, ketchup, salad",280,"Burger, Chicken",0,1,1,0,0,0,0,0,0,0,0,0
+38,3,Quarter Pounder with Cheese,"Royal steak, 2 pieces of cheese, mustard, ketchup, onion, pickles",445,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+39,3,Double Meatball Burger,"2 Meatball Burger Patties, Cheese, Onion Yogurt Sauce, Ketchup, Onion, Salad",385,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+40,3,Meatball Burger,"Meatball burger patty, cheese, onion yogurt sauce, ketchup, onion, salad",330,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+41,3,Daba Daba Burger,"2 crispy chicken pieces, mayonnaise, tomatoes, and a generously sliced lettuce",360,"Burger, Chicken",0,1,1,0,0,0,0,0,0,0,0,0
+42,3,Double Big Mac,"4 burger patties, cheese, Big Mac sauce, onions, pickles, salad",525,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+43,3,Double Cheeseburger,"2 burger patties, 2 slices of cheese, mustard, ketchup, onion, pickles",405,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+44,3,Double McChicken,"2 McChicken steaks, mayonnaise, salad",390,"Burger, Chicken",0,1,1,0,0,0,0,0,0,0,0,0
+45,3,Double Quarter Pounder with cheese,"2 pieces of royal steak, 2 pieces of cheese, mustard, ketchup, onion, pickles",560,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+46,3,Big Mac,"2 burger patties, cheese, Big Mac sauce, onions, pickles, salad",425,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+47,3,Hamburger,"Burger patty, mustard, ketchup, onion, pickles",325,"Beef, Burger",1,1,0,0,0,0,0,0,0,0,0,0
+48,3,Cheeseburger,"Burger patty, cheese, mustard, ketchup, onion, pickles",335,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+49,3,Quarter Pounder Deluxe with Cheese,"Royal steak, 2 cheeses, mustard, ketchup, mayonnaise, onion, pickles, tomato, thick-cut lettuce",455,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+50,3,Double Quarter Pounder Deluxe with Cheese,"2 pieces of royal steak, 2 pieces of cheese, mustard, ketchup, mayonnaise, onion, pickles, tomato, thick-cut lettuce",570,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+51,3,Spicy McCrispy,"McCrispy meat, spicy pepper sauce, salad",375,"Burger, Chicken",0,1,1,0,0,0,0,0,0,0,0,0
+52,3,McCrispy Deluxe,"McCrispy eti, limonlu mayonez sos, salata, domates, peynir",385,"Burger, Chicken",0,1,1,0,0,0,0,0,0,0,0,0
+53,3,Spicy McCrispy Deluxe,"McCrispy eti, baharatlı biberli sos, salata, domates, peynir",385,"Burger, Chicken",0,1,1,0,0,0,0,0,0,0,0,0
+54,3,Chicken McNuggets (6 pieces),6 pieces,200,"Chicken, Snacks",0,0,1,0,0,0,0,0,0,0,1,0
+55,3,Chicken McNuggets (9 pieces),9 pieces,220,"Chicken, Snacks",0,0,1,0,0,0,0,0,0,0,1,0
+56,3,French Fries (Super),Super size,130,"Potatoes, Snacks",0,0,0,0,0,0,0,0,1,0,1,0
+57,3,French Fries (Large),Oversized,110,"Potatoes, Snacks",0,0,0,0,0,0,0,0,1,0,1,0
+58,3,French Fries (Medium),Medium size,85,"Potatoes, Snacks",0,0,0,0,0,0,0,0,1,0,1,0
+59,3,French Fries (Small),Small size,75,"Potatoes, Snacks",0,0,0,0,0,0,0,0,1,0,1,0
+60,3,Crispy Onion Rings (8 pieces),8 pieces,100,Snacks,0,0,0,0,0,0,0,0,0,0,1,0
+61,3,Crispy Onion Rings (12 pieces),12 pieces,120,Snacks,0,0,0,0,0,0,0,0,0,0,1,0
+62,3,Crispy Onion Rings (16 pieces),16 pieces,140,Snacks,0,0,0,0,0,0,0,0,0,0,1,0
+63,3,Crispy Tenders (2 pieces),2 pieces,130,"Snacks, Chicken",0,0,1,0,0,0,0,0,0,0,1,0
+64,3,Crispy Tenders (4 pieces),4 pieces,240,"Snacks, Chicken",0,0,1,0,0,0,0,0,0,0,1,0
+65,3,McWings (2 pieces),2 pieces,185,"Chicken, Snacks",0,0,1,0,0,0,0,0,0,0,1,0
+66,3,McWings (4 pieces),4 pieces,310,"Snacks, Chicken",0,0,1,0,0,0,0,0,0,0,1,0
+67,3,Churros with Chocolate Sauce,,100,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+68,3,Churros with Caramel Sauce,,100,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+69,3,McFlurry Plain,,100,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+70,3,McFlurry Blackberry,,100,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+71,3,McFlurry Bonibon,,100,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+72,3,KITKAT and McFlurry,,100,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+73,3,Strawberry White Chocolate Topped Donut,,125,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+74,3,Cocoa Hazelnut Cream Donut,,125,Dessert,0,0,0,1,0,0,0,0,0,0,0,0
+75,4,Cajun Mix Menü,1 Adet Cajun Burger + 2 Adet Cajun Baharatlı Tavuk + 2 Adet Seçeceğiniz Soğan Halkası + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet Kutu içecek,562.5,"Chicken, Burger",0,1,1,0,0,0,0,0,0,0,0,0
+76,4,Cajun Ekonomik Menü,Cajun Baharatlı Sepet + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Soğan Halkası + 2 Adet Seçeceğiniz Sos + Kutu içecek,445.5,"Chicken, Snacks, Potatoes",0,0,1,0,0,0,0,0,1,0,1,0
+77,4,Cajun Smoky Burger Menü,Cajun Smoky Burger + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek,589.5,"Chicken, Burger",0,1,1,0,0,0,0,0,0,0,0,0
+78,4,Cajun Ranchy Burger Menü,Cajun Ranchy Burger + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek,544.5,"Chicken, Burger",0,1,1,0,0,0,0,0,0,0,0,0
+79,4,Cajun Cheesy Burger Menü,Cajun Cheesy Burger + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek,553.5,"Chicken, Burger",0,1,1,0,0,0,0,0,0,0,0,0
+80,4,Cajun Hoty Burger Menü,Cajun Hoty Burger + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek,549,"Chicken, Burger",0,1,1,0,0,0,0,0,0,0,0,0
+81,4,Cajun Roll Menü,"Cajun Roll (Tortilla ekmeği arasında; Cajun baharatlı tavuk parçaları, kıvırcık marul, garlic sos, sriracha sos) + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet Kutu içecek",499.5,"Dürüm, Chicken",0,0,1,0,1,0,0,0,0,0,0,0
+82,4,Cajun Burrito Menü,"Cajun Burrito (Tortilla ekmeği arasında; Cajun baharatlı tavuk parçaları, domates, soğan, maydanoz, ranch sos, yanında dilim limon) + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet Kutu içecek",499.5,"Dürüm, Chicken",0,0,1,0,1,0,0,0,0,0,0,0
+83,4,Hamburger Menü,"Hamburger (110 gr. burger köftesi, burger sos, kıvırcık marul, domates) + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek",657,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+84,4,Cheeseburger Menü,"Cheeseburger (110 gr. burger köftesi, burger sos, kıvırcık marul, domates, cheddar peyniri) + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek",679.5,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+85,4,Philadelphia Burger Menü,"Philadelphia Burger (110 gr. burger köftesi, burger sos, kıvırcık marul, domates, panelenmiş kaşar peyniri) + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek",702,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+86,4,Honky Tonky Burger Menü,"Honky Tonky Burger (110 gr. burger köftesi, burger sos, kıvırcık marul, domates, 90 gr. tütsülenmiş füme sosis, kaşar peyniri) + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek",742.5,"Burger, Beef",1,1,0,0,0,0,0,0,0,0,0,0
+87,4,Cajun Burger Menü,"Cajun Burger (120 gr. Cajun baharatlı tavuk, burger sos, kıvırcık marul, cheddar peyniri) + Baharatlı Patates Kızartması + 2 Adet Seçeceğiniz Sos + 1 Adet içecek",526.5,"Chicken, Burger",0,1,1,0,0,0,0,0,0,0,0,0
+88,4,Tex-Mex Menü,"Burger köftesi (100 gr.), burger sos, köz domates, hindi füme eti, Baharatlı Patates Kızartması, 2 adet seçeceğiniz sos ve içecek (33 cl.)",702,"Beef, Burger",1,1,0,0,0,0,0,0,0,0,0,0
+89,4,Cajun Hot Honey Burger Menü,Hot Honey Burger + 4 Adet Cajun Shot + Baharatlı Patates Kızartması + Seçeceğiniz 2 Adet Sos + Kutu içecek,540,"Chicken, Burger, Snacks",0,1,1,0,0,0,0,0,0,0,1,0
+90,4,Trüffle Burger Menü,Cajun Trüffle Burger + 4 Adet Cajun Shot + Baharatlı Patates Kızartması + 2 Adet seçilecek sos + Kutu içecek,549,"Chicken, Burger, Snacks",0,1,1,0,0,0,0,0,0,0,1,0

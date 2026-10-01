@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
-
+const db = require('./database')
 const projectRoot = path.join(__dirname, '..', '..')
 const pagesPath = path.join(projectRoot, 'src', 'renderer', 'pages')
 

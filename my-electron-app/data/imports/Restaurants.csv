@@ -1,0 +1,6 @@
+restaurant_id,name,cuisine,rating,delivery_time_min
+1,Pilavita,Turkish,4.2,30
+2,Çatı Açık Büfe,Healthy,4.5,30
+3,McDonald's,Fast Food,3,15
+4,Cajun Corner,Fast Food,4.2,20
+5,Beykoz,Healthy,4.4,45

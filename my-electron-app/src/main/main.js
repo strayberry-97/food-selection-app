@@ -1,6 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
-require('electron-reload')(__dirname);
+
+const projectRoot = path.join(__dirname, '..', '..')
+const pagesPath = path.join(projectRoot, 'src', 'renderer', 'pages')
+
+require('electron-reload')(projectRoot);
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -16,7 +20,7 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile('result.html')
+  win.loadFile(path.join(pagesPath, 'result.html'))
 }
 
 ipcMain.on('minimize-window', (event) => {

@@ -1,18 +1,18 @@
 @font-face {
     font-family: 'Cardo';
-    src: url('./fonts/Cardo/Cardo-Regular.ttf') format('truetype');
+    src: url('../../../assets/fonts/Cardo/Cardo-Regular.ttf') format('truetype');
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'Silkscreen';
-    src: url('./fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
+    src: url('../../../assets/fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'Mea Culpa';
-    src: url('./fonts/Mea_Culpa/MeaCulpa-Regular.ttf') format('truetype');
+    src: url('../../../assets/fonts/Mea_Culpa/MeaCulpa-Regular.ttf') format('truetype');
     font-weight: normal;
 }
 
@@ -33,7 +33,7 @@ body{
 
     font-family: 'Cardo', serif;
 
-    background-image: url('./imgs/bg_flowers.png');
+    background-image: url('../../../assets/images/bg_flowers.png');
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -58,7 +58,7 @@ button{
 
 .title-bar{
     height: 46px;
-    background-image: url('./imgs/title_lace.png');
+    background-image: url('../../../assets/images/title_lace.png');
     background-size: 100%;
     background-repeat: no-repeat;
     -webkit-app-region: drag;
@@ -512,7 +512,7 @@ h1{
     position: fixed;
     justify-self: center;
     align-self: center;
-    background-image: url('./imgs/leopard.jpg');
+    background-image: url('../../../assets/images/leopard.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

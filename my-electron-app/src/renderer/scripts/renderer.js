@@ -63,9 +63,9 @@ ratings.forEach(rating =>{
 
             stars.forEach(s => {
                 if (Number(s.dataset.rating) <= currentRating){
-                    s.src = "./svg/star-filled.svg";
+                    s.src = "../../../assets/svg/star-filled.svg";
                 } else {
-                    s.src = "./svg/star-unfilled.svg";
+                    s.src = "../../../assets/svg/star-unfilled.svg";
                 }
             })
         })
@@ -75,9 +75,9 @@ ratings.forEach(rating =>{
 
             stars.forEach(s =>{
                 if (Number(s.dataset.rating) <= hoverRating){
-                    s.src = "./svg/star-filled.svg";
+                    s.src = "../../../assets/svg/star-filled.svg";
                 } else {
-                    s.src = "./svg/star-unfilled.svg";
+                    s.src = "../../../assets/svg/star-unfilled.svg";
                 }
             })
         })
@@ -85,9 +85,9 @@ ratings.forEach(rating =>{
     rating.addEventListener('mouseleave', () =>{
         stars.forEach(s =>{
             if (Number(s.dataset.rating) <= currentRating){
-                s.src = "./svg/star-filled.svg";
+                s.src = "../../../assets/svg/star-filled.svg";
             }else{
-                s.src = "./svg/star-unfilled.svg";
+                s.src = "../../../assets/svg/star-unfilled.svg";
             }
         })
     })

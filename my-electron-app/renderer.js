@@ -93,14 +93,39 @@ ratings.forEach(rating =>{
     })
 })
 
-document.getElementById('homeButton').addEventListener('click', () =>{
-    window.location.href = 'index.html';
-})
+const homeButton = document.getElementById('homeButton');
+if (homeButton) {
+    homeButton.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+}
 
-document.getElementById("historyButton").addEventListener("click", () => {
-    window.location.href = "history.html";
-});
+const historyButton = document.getElementById('historyButton');
+if (historyButton) {
+    historyButton.addEventListener('click', () => {
+        window.location.href = 'history.html';
+    });
+}
 
-document.getElementById("pickButton").addEventListener("click", () => {
-    window.location.href = "thinking.html";
-});
+const pickButton = document.getElementById('pickButton');
+if (pickButton) {
+    pickButton.addEventListener('click', () => {
+        window.location.href = 'thinking.html';
+    });
+}
+
+const popupOverlay = document.getElementById('popupOverlay');
+const openPopup = document.getElementById('openPopup');
+const closePopup = document.getElementById('closePopup');
+
+if (openPopup && popupOverlay) {
+    openPopup.addEventListener('click', () => {
+        popupOverlay.classList.add('visible');
+    });
+}
+
+if (closePopup && popupOverlay) {
+    closePopup.addEventListener('click', () => {
+        popupOverlay.classList.remove('visible');
+    });
+}

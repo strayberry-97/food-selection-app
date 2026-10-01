@@ -21,6 +21,8 @@
 }
 
 body{
+    overflow-x: hidden;
+
     -webkit-font-smoothing: antialiased;
 
     margin: 0;
@@ -304,7 +306,6 @@ h1{
     animation: flicker 0.2s infinite;
 }
 
-/* scanlines + very subtle RGB tint */
 .crt::before {
     content: "";
     position: absolute;
@@ -501,4 +502,61 @@ h1{
     width: 100%;
     margin-top: 12px;
     border: 1px solid #5D5D5D;
+}
+
+.popup-overlay{
+    display: none;
+}
+
+.popup{
+    position: fixed;
+    justify-self: center;
+    align-self: center;
+    background-image: url('./imgs/leopard.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: none;
+    inset: 0;
+    width: 374px;
+    height: 244px;
+    border: 4px solid #222;
+
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+    font-weight: 46px;
+    box-sizing: border-box;
+}
+
+.popup-overlay.visible{
+    display: flex;
+}
+
+.popup button{
+    height: 23px;
+    width: 116px;
+    background-color: #A4A3A3;
+    color: #fff;
+
+    font-size: 16px;
+    margin-top: 23px;
+}
+
+.popup h1{
+    margin: 0;
+    margin-bottom: 11px;
+}
+
+.popup select{
+    height: 23px;
+    width: 186px;
+
+    border: 1px solid #5d5d5d;
+
+    font-family: 'Silkscreen', monospace;
+}
+
+.popup select option{
+    font-family: 'Silkscreen', monospace;
 }

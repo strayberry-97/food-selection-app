@@ -1,10 +1,12 @@
 const Database = require("better-sqlite3");
-const fs = require('fs');
-const { parse } = require('csv-parse/sync');
+const path = require("node:path");
 
-const db = new Database("meals.db");
+const db = new Database(path.join(__dirname, "..", "..", "data", "meals.db"));
+
 
 db.pragma("foreign_keys = ON");
+
+
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS restaurants (
@@ -46,15 +48,6 @@ db.exec(`
     );
 `);
 
-const insertRestaurant = db.prepare(`
-        INSERT INTO restaurants (
-            restaurant_id,
-            name,
-            cuisine,
-            rating,
-            delivery_time_min
-        )
-        VALUES (?, ?, ?, ?, ?)
-    `);
+
 
 module.exports = db;

@@ -1,4 +1,4 @@
-meal_id,restaurant_id,name,description,price,category,Beef,Burger,Chicken,Dessert,Dörüm,Köfte,Pasta,Pilaf,Potatoes,Salad,Snacks,Soup
+meal_id,restaurant_id,name,description,price,category,Beef,Burger,Chicken,Dessert,Dürüm,Köfte,Pasta,Pilaf,Potatoes,Salad,Snacks,Soup
 1,1,Sporcu Pilavı,"Rice pilaf with chickpeas, shredded chicken. Served with salad and pickles",432,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
 2,1,Chicken Rice,Prepared with chickpea rice (250 gr.) and chicken (80 gr.). Served with salad and pickles.,360,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0
 3,1,Sautéed Chicken Over Rice,"Chickpea rice pilaf, sauteéd chicken. Served with salad and pickles.",384,"Pilaf, Chicken",0,0,1,0,0,0,0,1,0,0,0,0

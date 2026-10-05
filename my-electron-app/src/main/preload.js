@@ -8,3 +8,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 contextBridge.exposeInMainWorld('databaseAPI', {
     getMeals: () => ipcRenderer.invoke('database:getMeals')
 });
+
+contextBridge.exposeInMainWorld('recommendationAPI', {
+    getRecommendation: () => ipcRenderer.invoke('recommender:getRecommendation')
+})

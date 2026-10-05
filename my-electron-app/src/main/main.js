@@ -6,6 +6,10 @@ const pagesPath = path.join(__dirname, '..', 'renderer', 'pages')
 
 require('electron-reload')(projectRoot);
 
+function handleGetMeals(){
+
+}
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 673,
@@ -15,7 +19,6 @@ const createWindow = () => {
     alwaysOnTop: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true,
       devTools: true
     }
   })
@@ -31,7 +34,10 @@ ipcMain.on('close-window', (event) => {
   BrowserWindow.fromWebContents(event.sender)?.close()
 })
 
+ipcMain.handle('database:getMeals', handleGetMeals)
+
 app.whenReady().then(() => {
+  
   createWindow()
 
   app.on('activate', () => {

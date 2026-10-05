@@ -32,6 +32,19 @@ function runPython(meals) {
     });
 }
 
+function handleAddHistory(mealId, rating = null) {
+    const query = db.prepare(`
+        INSERT INTO meal_history (meal_id, eaten_at, user_rating)
+        VALUES (?, ?, ?)
+    `);
+
+    return query.run(
+        mealId,
+        new Date().toISOString(),
+        rating
+    );
+}
+
 function handleGetRecommendation(){
   const meals = handleGetMeals();
   const result = runPython(meals);
@@ -84,7 +97,12 @@ ipcMain.on('close-window', (event) => {
 })
 
 ipcMain.handle('database:getMeals', handleGetMeals)
+
 ipcMain.handle('recommender:getRecommendation', handleGetRecommendation)
+
+ipcMain.handle('history:add', (event, mealId, rating) => {
+  handleAddHistory(mealId, rating);
+})
 
 app.whenReady().then(() => {
 

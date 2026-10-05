@@ -46,6 +46,16 @@ db.exec(`
         FOREIGN KEY (tag_id)
             REFERENCES tags(tag_id)
     );
+
+    CREATE TABLE IF NOT EXISTS meal_history (
+        history_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        meal_id INTEGER NOT NULL,
+        eaten_at TEXT NOT NULL,
+        user_rating INTEGER,
+
+        FOREIGN KEY (meal_id)
+            REFERENCES meals(meal_id)
+    );
 `);
 
 

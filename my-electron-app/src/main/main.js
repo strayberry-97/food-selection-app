@@ -7,7 +7,10 @@ const pagesPath = path.join(__dirname, '..', 'renderer', 'pages')
 require('electron-reload')(projectRoot);
 
 function handleGetMeals(){
+  const query = db.prepare(`SELECT *
+           FROM meals`);
 
+  return query.all();
 }
 
 const createWindow = () => {

@@ -1,3 +1,3 @@
-async function getMeals(){
+ export async function getMeals(){
     const meals = await window.databaseAPI.getMeals();
 }

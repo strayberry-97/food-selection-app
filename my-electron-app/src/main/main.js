@@ -33,9 +33,9 @@ function runPython(meals) {
 }
 
 function handleGetRecommendation(){
-  const meals = 
-  const result = runPython(meals)
-  return result
+  const meals = handleGetMeals();
+  const result = runPython(meals);
+  return result;
 }
 
 function handleGetMeals(){
@@ -87,7 +87,6 @@ ipcMain.handle('database:getMeals', handleGetMeals)
 ipcMain.handle('recommender:getRecommendation', handleGetRecommendation)
 
 app.whenReady().then(() => {
-  runPython()
 
   createWindow()
 

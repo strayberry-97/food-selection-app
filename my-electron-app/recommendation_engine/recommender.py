@@ -7,7 +7,13 @@ def recommend_meal(meals, history = None, preference = None):
             choice = meal
     return choice
 
+import sys
+import json
 
+data = json.load(sys.stdin)
+
+print(f"Received {len(data)} meals", flush=True)
+print(data[0], flush=True)
 
 meals = [
     {"name": "Sporcu Pilavı", "price": 632},

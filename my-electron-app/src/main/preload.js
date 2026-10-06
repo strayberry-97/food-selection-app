@@ -14,5 +14,6 @@ contextBridge.exposeInMainWorld('recommendationAPI', {
 })
 
 contextBridge.exposeInMainWorld('historyAPI', {
-    add: (mealId, rating) => ipcRenderer.invoke('history:add', mealId, rating)
+    add: (mealId, rating) => ipcRenderer.invoke('history:add', mealId, rating),
+    retrieve: () => ipcRenderer.invoke('history:retrieve')
 })

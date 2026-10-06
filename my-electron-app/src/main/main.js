@@ -7,12 +7,12 @@ const pagesPath = path.join(__dirname, '..', 'renderer', 'pages')
 
 require('electron-reload')(projectRoot);
 
-function runPython(meals) {
+function runPython(meals, history) {
     const python = spawn('python3', [
         '././recommendation_engine/recommender.py'
     ]);
 
-    python.stdin.write(JSON.stringify(meals));
+    python.stdin.write(JSON.stringify({meals: meals, history: history}));
     python.stdin.end();
 
     python.stdout.on('data', (data) => {
@@ -47,7 +47,10 @@ function handleAddHistory(mealId, rating = null) {
 
 function handleGetRecommendation(){
   const meals = handleGetMeals();
-  const result = runPython(meals);
+  const history = handleRetrieveMealHistory();
+
+  const result = runPython(meals, history);
+
   return result;
 }
 
@@ -68,6 +71,19 @@ function handleGetMeals(){
                                 ON mt.tag_id = t.tag_id
                             GROUP BY m.meal_id;
            `);
+
+  return query.all();
+}
+
+function handleRetrieveMealHistory(){
+  const query = db.prepare(`
+        SELECT history_id,
+               meal_id,
+               eaten_at,
+               user_rating
+        FROM meal_history
+        ORDER BY eaten_at DESC;
+    `);
 
   return query.all();
 }
@@ -103,6 +119,8 @@ ipcMain.handle('recommender:getRecommendation', handleGetRecommendation)
 ipcMain.handle('history:add', (event, mealId, rating) => {
   handleAddHistory(mealId, rating);
 })
+
+ipcMain.handle('history:retrieve', handleRetrieveMealHistory)
 
 app.whenReady().then(() => {
 

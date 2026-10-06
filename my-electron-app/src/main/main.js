@@ -8,6 +8,7 @@ const pagesPath = path.join(__dirname, '..', 'renderer', 'pages')
 require('electron-reload')(projectRoot);
 
 function runPython(meals, history) {
+  return new Promise((resolve, reject) => {
     const python = spawn('python3', [
         '././recommendation_engine/recommender.py'
     ]);
@@ -15,21 +16,29 @@ function runPython(meals, history) {
     python.stdin.write(JSON.stringify({meals: meals, history: history}));
     python.stdin.end();
 
+    let output = '';
+
     python.stdout.on('data', (data) => {
-        console.log(`Python stdout: ${data}`);
+        output += data.toString();
     });
 
     python.stderr.on('data', (data) => {
         console.error(`Python stderr: ${data}`);
     });
 
-    python.on('error', (error) => {
-        console.error('Failed to start Python:', error);
+     python.on('error', (error) => {
+        reject(error);
     });
 
     python.on('close', (code) => {
-        console.log(`Python exited with code ${code}`);
+        if (code === 0){
+          resolve(output);
+        } else {
+          reject( new Error (`Python exited with code ${code}`))
+        }
     });
+
+  });
 }
 
 function handleAddHistory(mealId, rating = null) {
@@ -45,13 +54,15 @@ function handleAddHistory(mealId, rating = null) {
     );
 }
 
-function handleGetRecommendation(){
+async function handleGetRecommendation(){
   const meals = handleGetMeals();
   const history = handleRetrieveMealHistory();
 
-  const result = runPython(meals, history);
+  const result = await runPython(meals, history);
 
-  return result;
+  const recommendation = JSON.parse(result);
+
+  return recommendation;
 }
 
 function handleGetMeals(){

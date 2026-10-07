@@ -507,42 +507,58 @@ h1{
 }
 
 .popup-overlay{
-    display: none;
+    display: flex;
+    visibility: hidden;
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    -webkit-app-region: no-drag;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .popup{
-    position: fixed;
-    justify-self: center;
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 101;
+
     background-image: url('../assets/images/leopard.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     transform: none;
-    inset: 0;
+
     width: 374px;
     height: 244px;
     border: 4px solid #222;
 
-    justify-items: center;
-    align-content: center;
     text-align: center;
     font-weight: 46px;
     box-sizing: border-box;
 }
 
 .popup-overlay.visible{
-    display: flex;
+    visibility: visible;
 }
 
 .popup button{
+    display: flex;
+    align-self: center;
     height: 23px;
     width: 116px;
+    flex: 0 0 23px;
     background-color: #A4A3A3;
     color: #fff;
 
     font-size: 16px;
     margin-top: 23px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
 }
 
 .popup h1{

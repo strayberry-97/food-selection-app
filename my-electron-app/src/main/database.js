@@ -56,6 +56,14 @@ db.exec(`
         FOREIGN KEY (meal_id)
             REFERENCES meals(meal_id)
     );
+
+    CREATE TABLE IF NOT EXISTS declined_meals (
+    decline_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meal_id INTEGER NOT NULL,
+    declined_at TEXT NOT NULL,
+    reason TEXT,
+    FOREIGN KEY (meal_id) REFERENCES meals(meal_id)
+);
 `);
 
 

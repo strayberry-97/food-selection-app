@@ -86,6 +86,19 @@ function handleGetMeals(){
   return query.all();
 }
 
+function handleDecline(mealId, reason){
+  const query = db.prepare(`
+        INSERT INTO declined_meals (meal_id, declined_at, reason)
+        VALUES (?, ?, ?)
+    `);
+
+  return query.run(    
+    mealId,
+    new Date().toISOString(),
+    reason
+  );
+}
+
 function handleRetrieveMealHistory(){
   const query = db.prepare(`
         SELECT history_id,
@@ -112,7 +125,7 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile(path.join(pagesPath, 'result.html'))
+  win.loadFile(path.join(pagesPath, 'index.html'))
 }
 
 ipcMain.on('minimize-window', (event) => {
@@ -132,6 +145,10 @@ ipcMain.handle('history:add', (event, mealId, rating) => {
 })
 
 ipcMain.handle('history:retrieve', handleRetrieveMealHistory)
+
+ipcMain.handle('history:decline', (event, mealId, reason) =>{
+  handleDecline(mealId, reason)
+} )
 
 app.whenReady().then(() => {
 

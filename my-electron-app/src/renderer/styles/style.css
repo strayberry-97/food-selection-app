@@ -473,6 +473,7 @@ h1{
 
     font-family: 'Cardo', sans-serif;
     font-size: 19px;
+    text-align: center;
 
     align-items: center;
     justify-content: center;
@@ -482,6 +483,7 @@ h1{
 
 #result-main-content span{
     font-family: 'Silkscreen', monospace;
+    width: 300px;
 }
 
 #result-content{

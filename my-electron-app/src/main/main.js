@@ -101,15 +101,32 @@ function handleDecline(mealId, reason){
 
 function handleRetrieveMealHistory(){
   const query = db.prepare(`
-        SELECT history_id,
-               meal_id,
-               eaten_at,
-               user_rating
-        FROM meal_history
-        ORDER BY eaten_at DESC;
-    `);
+    SELECT
+        h.history_id,
+        h.meal_id,
+        h.eaten_at,
+        h.user_rating,
+        m.name AS meal_name,
+        r.name AS restaurant_name
+    FROM meal_history h
+    JOIN meals m
+        ON h.meal_id = m.meal_id
+    JOIN restaurants r
+        ON m.restaurant_id = r.restaurant_id
+    ORDER BY h.eaten_at DESC;
+  `);
 
   return query.all();
+}
+
+function handleUpdateRating(historyId, rating){
+  const query = db.prepare(`
+        UPDATE meal_history
+        SET user_rating = ?
+        WHERE history_id = ?
+    `);
+
+  return query.run(rating, historyId);
 }
 
 const createWindow = () => {
@@ -147,8 +164,12 @@ ipcMain.handle('history:add', (event, mealId, rating) => {
 ipcMain.handle('history:retrieve', handleRetrieveMealHistory)
 
 ipcMain.handle('history:decline', (event, mealId, reason) =>{
-  handleDecline(mealId, reason)
+  handleDecline(mealId, reason);
 } )
+
+ipcMain.handle('history:updateRating', (event, historyId, rating) =>{
+  return handleUpdateRating(historyId, rating);
+});
 
 app.whenReady().then(() => {
 

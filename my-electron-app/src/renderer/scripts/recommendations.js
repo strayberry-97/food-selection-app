@@ -11,12 +11,19 @@ async function getRecommendation(){
 
 getRecommendation();
 
+document.getElementById("accept").addEventListener('click', async () => {
+    await window.historyAPI.add(
+        recommendation.meal_id,
+        null
+    );
+    
+    window.location.href = 'index.html';
+
+})
+
 document.getElementById('closePopup').addEventListener('click', async () => {
     const popup = document.getElementById('popupOverlay');
     const reason = document.getElementById('select').value;
-
-    console.log(recommendation.meal_id, typeof recommendation.meal_id);
-    console.log(reason, typeof reason);
 
     await window.historyAPI.decline(
         recommendation.meal_id,

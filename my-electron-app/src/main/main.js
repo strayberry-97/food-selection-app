@@ -62,6 +62,8 @@ async function handleGetRecommendation(){
 
   const recommendation = JSON.parse(result);
 
+  console.log(recommendation)
+
   return recommendation;
 }
 

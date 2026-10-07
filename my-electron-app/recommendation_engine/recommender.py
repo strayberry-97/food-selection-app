@@ -1,4 +1,5 @@
 from filter_meals import filter_meals
+from score_meals import score_meal
 import sys
 import json
 
@@ -15,12 +16,16 @@ preferences = {
     "allowed_cuisine" : None,
     "banned_restaurants" : None,
     "min_restaurant_rating": 4,
-    "excluded_tags": ['Chicken', 'Pilaf']
+    "excluded_tags": ['Pilaf'],
+    "favourite_tags": ['Chicken']
 }
 
 def recommend_meal(meals, history = None, preferences = None):
     filtered_meals = filter_meals(meals, preferences)
-    return filtered_meals[0] if filtered_meals else None
+    return max(
+        filtered_meals,
+        key = lambda meal: score_meal(meal, preferences, history)
+        )
 
 
 recommendation = recommend_meal(meals, history = history, preferences=preferences)

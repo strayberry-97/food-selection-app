@@ -17,6 +17,7 @@ contextBridge.exposeInMainWorld('historyAPI', {
     add: (mealId, rating) => ipcRenderer.invoke('history:add', mealId, rating),
     retrieve: () => ipcRenderer.invoke('history:retrieve'),
     decline: (mealId, reason) => ipcRenderer.invoke('history:decline', mealId, reason),
-    updateRating: (historyId, rating) => ipcRenderer.invoke('history:updateRating', historyId, rating)
+    updateRating: (historyId, rating) => ipcRenderer.invoke('history:updateRating', historyId, rating),
+    declinedHistory: () => ipcRenderer.invoke('history:declinedHistory')
 })
 

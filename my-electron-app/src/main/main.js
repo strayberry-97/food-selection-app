@@ -57,8 +57,9 @@ function handleAddHistory(mealId, rating = null) {
 async function handleGetRecommendation(){
   const meals = handleGetMeals();
   const history = handleRetrieveMealHistory();
+  const declined = handleDeclinedHistory();
 
-  const result = await runPython(meals, history);
+  const result = await runPython(meals, history, declined);
 
   const recommendation = JSON.parse(result);
 
@@ -119,6 +120,20 @@ function handleRetrieveMealHistory(){
   return query.all();
 }
 
+function handleDeclinedHistory(){
+  const query = db.prepare(`
+      SELECT 
+        d.decline_id,
+        d.meal_id,
+        d.declined_at,
+        d.reason
+      FROM declined_meals d
+      ORDER BY d.declined_at DESC;
+    `);
+
+    return query.all();
+}
+
 function handleUpdateRating(historyId, rating){
   const query = db.prepare(`
         UPDATE meal_history
@@ -170,6 +185,8 @@ ipcMain.handle('history:decline', (event, mealId, reason) =>{
 ipcMain.handle('history:updateRating', (event, historyId, rating) =>{
   return handleUpdateRating(historyId, rating);
 });
+
+ipcMain.handle('history:declinedHistory', handleDeclinedHistory);
 
 app.whenReady().then(() => {
 

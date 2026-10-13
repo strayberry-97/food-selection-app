@@ -7,6 +7,7 @@ data = json.load(sys.stdin)
 
 meals = data['meals']
 history = data['history']
+declined = data['declined']
 
 for meal in meals:
     meal['tags'] = meal['tags'].split(',')
@@ -20,14 +21,17 @@ preferences = {
     "favourite_tags": ['Chicken']
 }
 
-def recommend_meal(meals, history = None, preferences = None):
+def recommend_meal(meals, history = None, preferences = None, declined = None):
     filtered_meals = filter_meals(meals, preferences)
+
+    for meal in filtered_meals:
+        meal['score'] = score_meal(meal, preferences, history, declined)
     return max(
         filtered_meals,
-        key = lambda meal: score_meal(meal, preferences, history)
+        key = lambda meal: meal['score']
         )
 
 
-recommendation = recommend_meal(meals, history = history, preferences=preferences)
+recommendation = recommend_meal(meals, history = history, preferences=preferences, declined=declined)
 
 print(json.dumps(recommendation))

@@ -18,3 +18,10 @@ if (pickButton) {
         window.location.href = 'thinking.html';
     });
 }
+
+const preferencesButton = document.getElementById('preferencesButton');
+if (preferencesButton) {
+    preferencesButton.addEventListener('click', () => {
+        window.location.href = 'preferences.html';
+    });
+}

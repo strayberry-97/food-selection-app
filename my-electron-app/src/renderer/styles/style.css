@@ -16,6 +16,12 @@
     font-weight: normal;
 }
 
+.lacescr {
+    border-width:7px;
+    border-style:solid;
+    border-image: url('../assets/images/border_frilly.png') 8 fill round;
+} 
+
 *{
     box-sizing: border-box;
 }
@@ -579,3 +585,61 @@ h1{
 .popup select option{
     font-family: 'Silkscreen', monospace;
 }
+
+#preferences-main-content input:focus{
+    outline:none;
+}
+
+#preferences-main-content{
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    
+    flex: 1;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    border: 1px solid #6A6A6A;
+    padding: 8px;
+
+    gap: 16px;
+}
+
+
+#preferences-main-content::-webkit-scrollbar{
+    display: none;
+}
+
+.field{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#preferences-main-content select:focus{
+    outline: none;
+}
+
+#preferences-main-content select, input{
+    width: 150px;
+    height: 32px;
+}
+
+#preferences-main-content option{
+    background-color: transparent;
+}
+
+#preferences-main-content h2{
+    margin: 0px;
+}
+
+#preferences-main-content section{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+

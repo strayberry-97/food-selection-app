@@ -6,7 +6,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
 });
 
 contextBridge.exposeInMainWorld('databaseAPI', {
-    getMeals: () => ipcRenderer.invoke('database:getMeals')
+    getMeals: () => ipcRenderer.invoke('database:getMeals'),
+    getCuisines: () => ipcRenderer.invoke('database:getCuisines'),
+    getRestaurants: () => ipcRenderer.invoke('database:getRestaurants'),
+    getTags: () => ipcRenderer.invoke('database:getTags')
 });
 
 contextBridge.exposeInMainWorld('recommendationAPI', {

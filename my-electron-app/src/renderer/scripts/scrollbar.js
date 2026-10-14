@@ -1,4 +1,6 @@
-const content = document.getElementById("history-main-content");
+const content = document.getElementById("history-main-content")?
+                document.getElementById("history-main-content"):
+                document.getElementById("preferences-main-content");
 const track = document.getElementById("scrollTrack");
 const thumb = document.getElementById("scrollThumb");
 

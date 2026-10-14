@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'" />
+    <meta http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'" />
+    <title>What are we eating today?</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+
+  <body class="crt">
+    <div class="title-bar">
+      <div class="window-buttons">
+        <button id="close">x</button>
+        <button id="minimize">–</button>
+      </div>
+    </div>
+    <div class="window">
+      <aside class="sidebar">
+        <img src="../assets/svg/Menu.svg" id="menu-svg">
+        <div class="menu">
+          <button id="homeButton">home</button>
+          <button id="historyButton">history</button>
+          <button id="preferencesButton">preferences</button>
+        </div>
+        <div id="main-screen-menu-line"></div>
+      </aside>
+
+      <main class="main-content" id="preferences-main-content">
+        <section>
+          <h2>Budget</h2>
+          <div class="field">
+            <label for="maxPrice">Maximum price</label>
+            <input id='maxPrice' class="lacescr">
+          </div>
+        </section>
+
+        <section>
+          <h2>Restaurants</h2>
+          <div class="field">
+            <label for="allowedCuisines">Allowed cuisines</label>
+            <select id='allowedCuisines' class="lacescr" multiple size="1">
+            </select>
+          </div>
+          <div class="field">
+            <label for="bannedRestaurants">Banned restaurants</label>
+            <select id='bannedRestaurants' class="lacescr" multiple size="1">
+            </select>
+          </div>
+          <div class="field">
+            <label for="minRestaurantRating">Minimum restaurant rating</label>
+            <input id='minRestaurantRating' class="lacescr">
+          </div>
+        </section>
+        <section>
+          <h2>Meal Preferences</h2>
+          <div class="field">
+            <label for="excludedTags">Excluded Tags</label>
+            <select id='excludedTags' class="lacescr" multiple size="1">
+            </select>
+          </div>
+          <div class="field">
+            <label for="favouriteTags">Favourite Tags</label>
+            <select id='favouriteTags' class="lacescr" multiple size="1">
+            </select>
+          </div>
+        </section>
+      </main>
+      <div class="scroll-track" id="scrollTrack">
+        <div class="scroll-thumb" id="scrollThumb"></div>
+      </div>
+    </div>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/windowControls.js"></script>
+    <script src="../scripts/scrollbar.js"></script>
+    <script src="../scripts/preferences.js"></script>
+  </body>
+
+</html>

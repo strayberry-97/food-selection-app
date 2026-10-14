@@ -7,13 +7,13 @@ const pagesPath = path.join(__dirname, '..', 'renderer', 'pages')
 
 require('electron-reload')(projectRoot);
 
-function runPython(meals, history) {
+function runPython(meals, history, declined) {
   return new Promise((resolve, reject) => {
     const python = spawn('python3', [
         '././recommendation_engine/recommender.py'
     ]);
 
-    python.stdin.write(JSON.stringify({meals: meals, history: history}));
+    python.stdin.write(JSON.stringify({meals: meals, history: history, declined: declined}));
     python.stdin.end();
 
     let output = '';
@@ -144,6 +144,33 @@ function handleUpdateRating(historyId, rating){
   return query.run(rating, historyId);
 }
 
+function handleGetCuisines(){
+  const query = db.prepare(`
+        SELECT DISTINCT cuisine
+        FROM restaurants
+        WHERE cuisine IS NOT NULL
+        ORDER BY cuisine
+    `);
+
+  return query.all();
+}
+
+function handleGetRestaurants(){
+  const query = db.prepare(`
+        SELECT name
+        FROM restaurants
+    `);
+  return query.all();
+}
+
+function handleGetTags(){
+  const query = db.prepare(`
+        SELECT name
+        FROM tags
+    `);
+  return query.all();
+}
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 673,
@@ -187,6 +214,12 @@ ipcMain.handle('history:updateRating', (event, historyId, rating) =>{
 });
 
 ipcMain.handle('history:declinedHistory', handleDeclinedHistory);
+
+ipcMain.handle('database:getCuisines', handleGetCuisines);
+
+ipcMain.handle('database:getRestaurants', handleGetRestaurants);
+
+ipcMain.handle('database:getTags', handleGetTags);
 
 app.whenReady().then(() => {
 

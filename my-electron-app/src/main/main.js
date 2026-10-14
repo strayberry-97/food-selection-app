@@ -4,6 +4,8 @@ const path = require('node:path')
 const db = require('./database')
 const projectRoot = path.join(__dirname, '..', '..')
 const pagesPath = path.join(__dirname, '..', 'renderer', 'pages')
+const preferencesPath = path.join(app.getPath('userData'), 'prefs.json')
+const fs = require('fs');
 
 require('electron-reload')(projectRoot);
 
@@ -171,6 +173,26 @@ function handleGetTags(){
   return query.all();
 }
 
+function handleSavePreferences(preferences){
+  fs.writeFileSync(
+    preferencesPath,
+    JSON.stringify(preferences, null, 2),
+    'utf8'
+  );
+  return {success : true};
+}
+
+function handleLoadPreferences(){
+  if(!fs.existsSync(preferencesPath)){
+    return null;
+  }
+  const json = fs.readFileSync(
+    preferencesPath,
+    'utf8'
+  )
+  return JSON.parse(json)
+}
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 673,
@@ -212,6 +234,12 @@ ipcMain.handle('history:decline', (event, mealId, reason) =>{
 ipcMain.handle('history:updateRating', (event, historyId, rating) =>{
   return handleUpdateRating(historyId, rating);
 });
+
+ipcMain.handle('database:savePreferences', (event, preferences) =>{
+  return handleSavePreferences(preferences);
+})
+
+ipcMain.handle('database:loadPreferences', handleLoadPreferences);
 
 ipcMain.handle('history:declinedHistory', handleDeclinedHistory);
 

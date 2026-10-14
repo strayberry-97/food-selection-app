@@ -47,10 +47,105 @@ async function populateFavouriteTags(){
     })
 }
 
-populateCuisineDropdown();
+function getPreferences(){
+    return {
+        max_price : getMaxPrice(),
+        allowed_cuisine: getAllowedCuisines(),
+        banned_restaurants: getBannedRestaurants(),
+        min_restaurant_rating: getMinRestaurantRating(),
+        excluded_tags: getExcludedTags(),
+        favourite_tags: getFavouriteTags()
+    };
+}
 
-populateRestaurantDropdown();
+function getMaxPrice(){
+    const maxPrice = document.getElementById('maxPrice').value;
+    return maxPrice === '' ? null : Number(maxPrice);
+}
 
-populateExcludedTags();
+function getAllowedCuisines(){
+    const select = document.getElementById('allowedCuisines');
+    const cuisines = Array.from(select.selectedOptions).map(option => option.value);
+    return cuisines;
+}
 
-populateFavouriteTags();
+function getBannedRestaurants(){
+    const select = document.getElementById('bannedRestaurants');
+    const banned = Array.from(select.selectedOptions).map(option => option.value);
+    return banned;
+}
+
+function getMinRestaurantRating(){
+    const rating = document.getElementById('minRestaurantRating').value;
+    return rating === '' ? null : Number(rating);
+}
+
+function getExcludedTags(){
+    const select = document.getElementById('excludedTags');
+    const excludedTags = Array.from(select.selectedOptions).map(option => option.value);
+    return excludedTags;
+}
+
+function getFavouriteTags(){
+    const select = document.getElementById('favouriteTags');
+    const favourite = Array.from(select.selectedOptions).map(option => option.value);
+    return favourite;
+}
+
+function applyPreferences(preferences){
+    if (!preferences) return;
+    document.getElementById('maxPrice').value = preferences.max_price ?? '';
+
+    document.getElementById('minRestaurantRating').value =
+        preferences.min_restaurant_rating ?? '';
+
+    setSelectedOptions('allowedCuisines', preferences.allowed_cuisine);
+    setSelectedOptions('bannedRestaurants', preferences.banned_restaurants);
+    setSelectedOptions('excludedTags', preferences.excluded_tags);
+    setSelectedOptions('favouriteTags', preferences.favourite_tags);
+}
+
+function setSelectedOptions(elementId, values) {
+    const select = document.getElementById(elementId);
+
+    Array.from(select.options).forEach(option => {
+        if (values === null) {
+            option.selected = true;
+        } else {
+            option.selected = values.includes(option.value);
+        }
+    });
+}
+
+
+
+
+
+
+
+async function initializePreferences(){
+    await Promise.all([
+        populateCuisineDropdown(),
+        populateRestaurantDropdown(),
+        populateExcludedTags(),
+        populateFavouriteTags()
+    ])
+
+    const savedPreferences = await window.databaseAPI.loadPreferences();
+
+    if (savedPreferences){
+        applyPreferences(savedPreferences);
+    }
+    document.querySelectorAll('#preferences-main-content input, #preferences-main-content select')
+    .forEach(element =>{
+        element.addEventListener('change', async () =>{
+            const preferences = getPreferences();
+            
+            await window.databaseAPI.savePreferences(preferences);
+
+            console.log('Preferences saved');
+        })
+    })
+}
+
+initializePreferences();

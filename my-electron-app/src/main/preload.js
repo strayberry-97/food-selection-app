@@ -9,7 +9,9 @@ contextBridge.exposeInMainWorld('databaseAPI', {
     getMeals: () => ipcRenderer.invoke('database:getMeals'),
     getCuisines: () => ipcRenderer.invoke('database:getCuisines'),
     getRestaurants: () => ipcRenderer.invoke('database:getRestaurants'),
-    getTags: () => ipcRenderer.invoke('database:getTags')
+    getTags: () => ipcRenderer.invoke('database:getTags'),
+    savePreferences: (preferences) => ipcRenderer.invoke('database:savePreferences', preferences),
+    loadPreferences: () => ipcRenderer.invoke('database:loadPreferences')
 });
 
 contextBridge.exposeInMainWorld('recommendationAPI', {

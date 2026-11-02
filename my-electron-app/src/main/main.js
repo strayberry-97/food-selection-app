@@ -9,13 +9,13 @@ const fs = require('fs');
 
 require('electron-reload')(projectRoot);
 
-function runPython(meals, history, declined) {
+function runPython(meals, history, declined, preferences) {
   return new Promise((resolve, reject) => {
     const python = spawn('python3', [
         '././recommendation_engine/recommender.py'
     ]);
 
-    python.stdin.write(JSON.stringify({meals: meals, history: history, declined: declined}));
+    python.stdin.write(JSON.stringify({meals: meals, history: history, declined: declined, preferences: preferences}));
     python.stdin.end();
 
     let output = '';
@@ -60,8 +60,9 @@ async function handleGetRecommendation(){
   const meals = handleGetMeals();
   const history = handleRetrieveMealHistory();
   const declined = handleDeclinedHistory();
+  const preferences = handleLoadPreferences();
 
-  const result = await runPython(meals, history, declined);
+  const result = await runPython(meals, history, declined, preferences);
 
   const recommendation = JSON.parse(result);
 

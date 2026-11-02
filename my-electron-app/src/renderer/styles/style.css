@@ -490,7 +490,7 @@ h1{
 
 #result-main-content span{
     font-family: 'Silkscreen', monospace;
-    width: 300px;
+    width: 400px;
 }
 
 #result-content{
@@ -498,14 +498,14 @@ h1{
     flex-direction: column;
 }
 
-#result-buttons{
+#result-buttons, #error-buttons{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 23px;
 }
 
-#result-buttons button{
+#result-buttons button, #error-buttons button{
     background-color: #A4A3A3;
     color:#fff;
     width: 100%;
@@ -642,4 +642,10 @@ h1{
     gap: 8px;
 }
 
+#result-main-content #from{
+    font-family: 'Cardo', sans-serif; 
+}
 
+[hidden]{
+    display: none !important;
+}

@@ -8,11 +8,14 @@ data = json.load(sys.stdin)
 meals = data['meals']
 history = data['history']
 declined = data['declined']
+preferences = data['preferences']
 
 for meal in meals:
     meal['tags'] = meal['tags'].split(',')
 
-preferences = {
+
+"""
+{
     "max_price" : 500,
     "allowed_cuisine" : None,
     "banned_restaurants" : None,
@@ -20,12 +23,16 @@ preferences = {
     "excluded_tags": ['Pilaf'],
     "favourite_tags": ['Chicken']
 }
+"""
 
 def recommend_meal(meals, history = None, preferences = None, declined = None):
     filtered_meals = filter_meals(meals, preferences)
 
+    if not filtered_meals: return None
+
     for meal in filtered_meals:
         meal['score'] = score_meal(meal, preferences, history, declined)
+
     return max(
         filtered_meals,
         key = lambda meal: meal['score']

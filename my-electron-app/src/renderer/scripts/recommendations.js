@@ -36,13 +36,15 @@ document.getElementById("accept").addEventListener('click', async () => {
 })
 
 document.getElementById('closePopup').addEventListener('click', async () => {
-    const popup = document.getElementById('popupOverlay');
     const reason = document.getElementById('select').value;
 
     await window.historyAPI.decline(
         recommendation.meal_id,
         reason
     );
+
+    window.location.href = 'index.html';
+
 })
 
 document.getElementById('go-to-preferences').addEventListener('click', () => {

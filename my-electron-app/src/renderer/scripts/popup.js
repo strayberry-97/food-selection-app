@@ -8,8 +8,3 @@ if (openPopup && popupOverlay) {
     });
 }
 
-if (closePopup && popupOverlay) {
-    closePopup.addEventListener('click', () => {
-        popupOverlay.classList.remove('visible');
-    });
-}

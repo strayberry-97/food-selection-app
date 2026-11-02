@@ -139,13 +139,42 @@ async function initializePreferences(){
     document.querySelectorAll('#preferences-main-content input, #preferences-main-content select')
     .forEach(element =>{
         element.addEventListener('change', async () =>{
-            const preferences = getPreferences();
+            if(validate()){
+                const preferences = getPreferences();
+                await window.databaseAPI.savePreferences(preferences);
+                console.log('Preferences saved');
+            }else{
+                console.log('Invalid values');
+            }
             
-            await window.databaseAPI.savePreferences(preferences);
-
-            console.log('Preferences saved');
         })
     })
 }
 
 initializePreferences();
+
+
+function validate(){
+    const maxPrice = getMaxPrice();
+    const minRestaurantRating = getMinRestaurantRating();
+
+    var isFinite = true;
+    var isNonNegative = true;
+
+    var priceIsValid = true;
+    var ratingIsValid = true;
+
+    if(maxPrice !== null){
+        isFinite = Number.isFinite(maxPrice);
+        isNonNegative = maxPrice >= 0;
+        priceIsValid = isFinite && isNonNegative;
+    }
+
+    if(minRestaurantRating !== null){
+        isFinite = Number.isFinite(minRestaurantRating);
+        isNonNegative = 0 <= minRestaurantRating && minRestaurantRating <= 5 ;
+        ratingIsValid = isFinite && isNonNegative;
+    }
+
+    return priceIsValid && ratingIsValid;
+}

@@ -175,6 +175,37 @@ function handleGetTags(){
 }
 
 function handleSavePreferences(preferences){
+
+  function checkArray(array){
+    if(!Array.isArray(array) || 
+      !array.every(item => typeof item === 'string')){
+      return false;
+    }
+    return true;
+  }
+
+  if(preferences === null || typeof(preferences) !== 'object' || Array.isArray(preferences)){
+    return {success : false};
+  }
+
+  if(preferences['max_price'] !== null && 
+    (!Number.isFinite(preferences['max_price']) || preferences['max_price'] < 0 )){
+    return {success : false};
+  }
+
+  if(preferences['min_restaurant_rating'] !== null &&
+    (!Number.isFinite(preferences['min_restaurant_rating']) || preferences['min_restaurant_rating'] > 5 || preferences['min_restaurant_rating'] < 0)
+  ){
+    return {success : false};
+  }
+
+  if (!checkArray(preferences['allowed_cuisine']) ||
+      !checkArray(preferences['banned_restaurants']) ||
+      !checkArray(preferences['excluded_tags']) ||
+      !checkArray(preferences['favourite_tags']) ){
+        return {success : false};
+      }
+
   fs.writeFileSync(
     preferencesPath,
     JSON.stringify(preferences, null, 2),
@@ -182,6 +213,8 @@ function handleSavePreferences(preferences){
   );
   return {success : true};
 }
+
+
 
 function handleLoadPreferences(){
   if(!fs.existsSync(preferencesPath)){

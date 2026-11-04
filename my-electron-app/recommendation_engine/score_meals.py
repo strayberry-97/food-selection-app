@@ -34,7 +34,7 @@ def score_meal(meal, preferences, history, declined):
 
         rated_history = [
             item for item in meal_history
-            if item['user_rating'] is not None
+            if item.get('user_rating') is not None
         ]
 
         if rated_history:
@@ -55,7 +55,7 @@ def score_meal(meal, preferences, history, declined):
                 case 1:
                     score -= 30
 
-    if any(tag in preferences['favourite_tags'] for tag in meal['tags']):
+    if preferences and any(tag in preferences['favourite_tags'] for tag in meal['tags'] or []):
         score += 10
 
     if declined:

@@ -9,10 +9,35 @@
   "scripts": {
     "start": "electron .",
     "seed": "node scripts/seedDatabase.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.foodselection.app",
+    "productName": "Meal Choice y2k",
+    "mac": {
+        "target": ["dmg"],
+        "icon": "src/renderer/assets/images/icon.icns"
+    },
+    "extraResources": [
+        {
+            "from": "recommendation_engine",
+            "to": "recommendation_engine"
+        },
+        {
+            "from": "data",
+            "to": "data"
+        }
+    ],
+    "files": [
+        "src/**/*",
+        "package.json"
+    ]
   },
   "devDependencies": {
     "electron": "^44.4.5",
+    "electron-builder": "^26.18.0",
     "electron-reload": "^2.0.0-alpha.1"
   },
   "dependencies": {

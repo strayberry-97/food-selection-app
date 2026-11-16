@@ -1,8 +1,24 @@
-const Database = require("better-sqlite3");
-const path = require("node:path");
+const { app } = require('electron');
+const Database = require('better-sqlite3');
+const path = require('node:path');
+const fs = require('node:fs');
 
-const db = new Database(path.join(__dirname, "..", "..", "data", "meals.db"));
+const sourcePath = app.isPackaged
+    ? path.join(process.resourcesPath, 'data', 'meals.db')
+    : path.join(__dirname, '..', '..', 'data', 'meals.db');
 
+let dbPath = sourcePath;
+
+if (app.isPackaged) {
+    dbPath = path.join(app.getPath('userData'), 'meals.db');
+
+    if (!fs.existsSync(dbPath)) {
+        fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+        fs.copyFileSync(sourcePath, dbPath);
+    }
+}
+
+const db = new Database(dbPath);
 
 db.pragma("foreign_keys = ON");
 

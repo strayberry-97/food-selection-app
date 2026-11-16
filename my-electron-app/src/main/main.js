@@ -5,58 +5,66 @@ const db = require('./database')
 const projectRoot = path.join(__dirname, '..', '..')
 const pagesPath = path.join(__dirname, '..', 'renderer', 'pages')
 const preferencesPath = path.join(app.getPath('userData'), 'prefs.json')
+const recommenderPath = app.isPackaged
+  ? path.join(process.resourcesPath, 'recommendation_engine', 'recommender.py')
+  : path.join(projectRoot, 'recommendation_engine', 'recommender.py')
 const fs = require('fs');
 
-require('electron-reload')(projectRoot);
+if (!app.isPackaged) {
+  require('electron-reload')(projectRoot);
+}
+
+
 
 function runPython(meals, history, declined, preferences) {
   return new Promise((resolve, reject) => {
-    const python = spawn('python3', [
-        '././recommendation_engine/recommender.py'
-    ]);
 
-    python.stdin.write(JSON.stringify({meals: meals, history: history, declined: declined, preferences: preferences}));
+    const python = spawn('/opt/homebrew/bin/python3', [recommenderPath]);
+
+    python.stdin.write(JSON.stringify({ meals: meals, history: history, declined: declined, preferences: preferences }));
     python.stdin.end();
 
     let output = '';
+    let erroroutput = '';
 
     python.stdout.on('data', (data) => {
-        output += data.toString();
+      output += data.toString();
     });
 
     python.stderr.on('data', (data) => {
-        console.error(`Python stderr: ${data}`);
+      erroroutput += data.toString();
+      console.error(`Python stderr: ${data}`);
     });
 
-     python.on('error', (error) => {
-        reject(error);
+    python.on('error', (error) => {
+      reject(error);
     });
 
     python.on('close', (code) => {
-        if (code === 0){
-          resolve(output);
-        } else {
-          reject( new Error (`Python exited with code ${code}`))
-        }
+      if (code === 0) {
+        resolve(output);
+      } else {
+        reject(new Error(`Python exited with code ${code}:\n${erroroutput}`))
+      }
     });
 
   });
 }
 
 function handleAddHistory(mealId, rating = null) {
-    const query = db.prepare(`
+  const query = db.prepare(`
         INSERT INTO meal_history (meal_id, eaten_at, user_rating)
         VALUES (?, ?, ?)
     `);
 
-    return query.run(
-        mealId,
-        new Date().toISOString(),
-        rating
-    );
+  return query.run(
+    mealId,
+    new Date().toISOString(),
+    rating
+  );
 }
 
-async function handleGetRecommendation(){
+async function handleGetRecommendation() {
   const meals = handleGetMeals();
   const history = handleRetrieveMealHistory();
   const declined = handleDeclinedHistory();
@@ -69,7 +77,7 @@ async function handleGetRecommendation(){
   return recommendation;
 }
 
-function handleGetMeals(){
+function handleGetMeals() {
   const query = db.prepare(`SELECT
                                 m.*,
                                 r.name AS restaurant_name,
@@ -90,20 +98,20 @@ function handleGetMeals(){
   return query.all();
 }
 
-function handleDecline(mealId, reason){
+function handleDecline(mealId, reason) {
   const query = db.prepare(`
         INSERT INTO declined_meals (meal_id, declined_at, reason)
         VALUES (?, ?, ?)
     `);
 
-  return query.run(    
+  return query.run(
     mealId,
     new Date().toISOString(),
     reason
   );
 }
 
-function handleRetrieveMealHistory(){
+function handleRetrieveMealHistory() {
   const query = db.prepare(`
     SELECT
         h.history_id,
@@ -123,7 +131,7 @@ function handleRetrieveMealHistory(){
   return query.all();
 }
 
-function handleDeclinedHistory(){
+function handleDeclinedHistory() {
   const query = db.prepare(`
       SELECT 
         d.decline_id,
@@ -134,10 +142,10 @@ function handleDeclinedHistory(){
       ORDER BY d.declined_at DESC;
     `);
 
-    return query.all();
+  return query.all();
 }
 
-function handleUpdateRating(historyId, rating){
+function handleUpdateRating(historyId, rating) {
   const query = db.prepare(`
         UPDATE meal_history
         SET user_rating = ?
@@ -147,7 +155,7 @@ function handleUpdateRating(historyId, rating){
   return query.run(rating, historyId);
 }
 
-function handleGetCuisines(){
+function handleGetCuisines() {
   const query = db.prepare(`
         SELECT DISTINCT cuisine
         FROM restaurants
@@ -158,7 +166,7 @@ function handleGetCuisines(){
   return query.all();
 }
 
-function handleGetRestaurants(){
+function handleGetRestaurants() {
   const query = db.prepare(`
         SELECT name
         FROM restaurants
@@ -166,7 +174,7 @@ function handleGetRestaurants(){
   return query.all();
 }
 
-function handleGetTags(){
+function handleGetTags() {
   const query = db.prepare(`
         SELECT name
         FROM tags
@@ -174,50 +182,50 @@ function handleGetTags(){
   return query.all();
 }
 
-function handleSavePreferences(preferences){
+function handleSavePreferences(preferences) {
 
-  function checkArray(array){
-    if(!Array.isArray(array) || 
-      !array.every(item => typeof item === 'string')){
+  function checkArray(array) {
+    if (!Array.isArray(array) ||
+      !array.every(item => typeof item === 'string')) {
       return false;
     }
     return true;
   }
 
-  if(preferences === null || typeof(preferences) !== 'object' || Array.isArray(preferences)){
-    return {success : false};
+  if (preferences === null || typeof (preferences) !== 'object' || Array.isArray(preferences)) {
+    return { success: false };
   }
 
-  if(preferences['max_price'] !== null && 
-    (!Number.isFinite(preferences['max_price']) || preferences['max_price'] < 0 )){
-    return {success : false};
+  if (preferences['max_price'] !== null &&
+    (!Number.isFinite(preferences['max_price']) || preferences['max_price'] < 0)) {
+    return { success: false };
   }
 
-  if(preferences['min_restaurant_rating'] !== null &&
+  if (preferences['min_restaurant_rating'] !== null &&
     (!Number.isFinite(preferences['min_restaurant_rating']) || preferences['min_restaurant_rating'] > 5 || preferences['min_restaurant_rating'] < 0)
-  ){
-    return {success : false};
+  ) {
+    return { success: false };
   }
 
   if (!checkArray(preferences['allowed_cuisine']) ||
-      !checkArray(preferences['banned_restaurants']) ||
-      !checkArray(preferences['excluded_tags']) ||
-      !checkArray(preferences['favourite_tags']) ){
-        return {success : false};
-      }
+    !checkArray(preferences['banned_restaurants']) ||
+    !checkArray(preferences['excluded_tags']) ||
+    !checkArray(preferences['favourite_tags'])) {
+    return { success: false };
+  }
 
   fs.writeFileSync(
     preferencesPath,
     JSON.stringify(preferences, null, 2),
     'utf8'
   );
-  return {success : true};
+  return { success: true };
 }
 
 
 
-function handleLoadPreferences(){
-  if(!fs.existsSync(preferencesPath)){
+function handleLoadPreferences() {
+  if (!fs.existsSync(preferencesPath)) {
     return null;
   }
   const json = fs.readFileSync(
@@ -261,15 +269,15 @@ ipcMain.handle('history:add', (event, mealId, rating) => {
 
 ipcMain.handle('history:retrieve', handleRetrieveMealHistory)
 
-ipcMain.handle('history:decline', (event, mealId, reason) =>{
+ipcMain.handle('history:decline', (event, mealId, reason) => {
   handleDecline(mealId, reason);
-} )
+})
 
-ipcMain.handle('history:updateRating', (event, historyId, rating) =>{
+ipcMain.handle('history:updateRating', (event, historyId, rating) => {
   return handleUpdateRating(historyId, rating);
 });
 
-ipcMain.handle('database:savePreferences', (event, preferences) =>{
+ipcMain.handle('database:savePreferences', (event, preferences) => {
   return handleSavePreferences(preferences);
 })
 
@@ -284,6 +292,7 @@ ipcMain.handle('database:getRestaurants', handleGetRestaurants);
 ipcMain.handle('database:getTags', handleGetTags);
 
 app.whenReady().then(() => {
+
 
   createWindow()
 

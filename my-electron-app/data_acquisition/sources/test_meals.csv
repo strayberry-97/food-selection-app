@@ -1,0 +1,9 @@
+name,restaurant_source_id,source,source_id,description,price,currency,category,is_available
+Margherita Pizza,rest_001,manual,meal_001,Classic tomato and mozzarella pizza,280.50,TRY,Pizza,true
+Chicken Alfredo,rest_002,manual,meal_002,Creamy pasta with chicken,320.00,TRY,Pasta,true
+Beef Burger,rest_003,manual,meal_003,,250,TRY,Burger,false
+Vegetable Sushi,rest_004,manual,meal_004,Assorted vegetable rolls,190.75,TRY,Sushi,yes
+Tuna Onigiri,rest_005,manual,meal_005,Rice ball with tuna mayo,120.00,TRY,Japanese,1
+Plain Pancakes,rest_006,manual,meal_006,,,,,
+French Fries,rest_007,manual,meal_007,Crispy potato fries,95.50,TRY,Side dish,no
+Cheese Sandwich,rest_008,manual,meal_008,Toasted cheese sandwich,85.00,TRY,Snack,0

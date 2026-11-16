@@ -1,9 +1,8 @@
 import csv
-from ..schemas import RestaurantRecord
+from ..schemas import RestaurantRecord, MealRecord
 from decimal import Decimal
 
-def parse_restaurants(rows):
-    def optional_value(row, field):
+def optional_value(row, field):
         value = row.get(field)
         if value is None:
             return None
@@ -11,10 +10,36 @@ def parse_restaurants(rows):
         value = value.strip()
         return value if value else None
 
-    def optional_decimal(row, field):
-        value = optional_value(row, field)
-        return Decimal(value) if value is not None else None
-    
+def optional_decimal(row, field):
+    value = optional_value(row, field)
+    return Decimal(value) if value is not None else None
+
+def boolean(value):
+    if value is None or not value.strip():
+        return None
+    if value.lower().strip() in ['false', 'no', '0']:
+        return False
+    if value.lower().strip() in ['true', 'yes', '1']:
+        return True
+    raise ValueError(f"Invalid boolean value: {value}")
+
+def parse_meals(rows):
+    meals = []
+    for row in rows:
+        meals.append(MealRecord(
+            name=row['name'],
+            restaurant_source_id=row['restaurant_source_id'],
+            source= row['source'],
+            source_id=optional_value(row, 'source_id'),
+            description=optional_value(row, 'description'),
+            price=optional_decimal(row, 'price'),
+            currency=optional_value(row, 'currency') or 'TRY',
+            category=optional_value(row, 'category'),
+            is_available=boolean(optional_value(row, 'is_available'))
+        ))
+    return meals
+
+def parse_restaurants(rows):
     restaurants = []
     for row in rows:
         restaurants.append(RestaurantRecord(name=row['name'],

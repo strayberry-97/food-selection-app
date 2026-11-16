@@ -8,7 +8,6 @@ from datetime import datetime
 class RestaurantRecord:
     name: str
     source: str
-    id: int
 
     source_id: Optional[str] = None
     cuisine: Optional[str] = None
@@ -48,7 +47,6 @@ class MealRecord:
     name: str
     restaurant_source_id: str
     source: str
-    id: int
 
     source_id: Optional[str] = None
     description: Optional[str] = None
@@ -97,5 +95,11 @@ class DataImportBatch:
 
 
 def validate_restaurant_meal_relationships(restaurants, meals):
-    restaurant_ids = {restaurant.id for restaurant in restaurants}
-    pass
+    errors = []
+    restaurant_ids = {(restaurant.source, restaurant.source_id) for restaurant in restaurants}
+
+    for meal in meals:
+        if (meal.source, meal.restaurant_source_id) not in restaurant_ids:
+            errors.append(f'{meal.source}, {meal.restaurant_source_id} isn\'t a valid combination')
+    
+    return errors

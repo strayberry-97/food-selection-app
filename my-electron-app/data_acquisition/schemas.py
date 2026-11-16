@@ -8,6 +8,7 @@ from datetime import datetime
 class RestaurantRecord:
     name: str
     source: str
+    id: int
 
     source_id: Optional[str] = None
     cuisine: Optional[str] = None
@@ -47,6 +48,7 @@ class MealRecord:
     name: str
     restaurant_source_id: str
     source: str
+    id: int
 
     source_id: Optional[str] = None
     description: Optional[str] = None
@@ -92,3 +94,8 @@ class DataImportBatch:
         for item in self.meals:
             if not isinstance(item, MealRecord):
                 raise ValueError('Invalid meals content type')
+
+
+def validate_restaurant_meal_relationships(restaurants, meals):
+    restaurant_ids = {restaurant.id for restaurant in restaurants}
+    pass

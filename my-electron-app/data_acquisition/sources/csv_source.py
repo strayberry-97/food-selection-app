@@ -2,6 +2,9 @@ import csv
 from ..schemas import RestaurantRecord, MealRecord
 from decimal import Decimal
 
+class EmptyFileError(Exception):
+    pass
+
 def optional_value(row, field):
         value = row.get(field)
         if value is None:
@@ -62,10 +65,16 @@ def read_csv(file_path, required = None):
         with open(file_path, encoding="utf-8") as file:
             if required is None:
                 required = set()
-            reader = csv.DictReader(file)
-            headers = set(reader.fieldnames or [])
+            reader = csv.DictReader(file, strict=True)
+            if reader.fieldnames is None:
+                raise EmptyFileError()
+            reader.fieldnames = [x.strip() for x in reader.fieldnames]
+            headers = set(reader.fieldnames)
+            if any (not header for header in reader.fieldnames):
+                raise ValueError('CSV contains empty column names')
             if not required.issubset(headers):
-                print("List doesn't contain required fields")
+                missing = required - headers
+                print(f"List doesn't contain required fields: {missing}")
                 return []
             return list(reader)
     except FileNotFoundError:
@@ -73,4 +82,12 @@ def read_csv(file_path, required = None):
         return []
     except UnicodeDecodeError:
         print("The file cannot be decoded as UTF-8")
+        return []
+    except EmptyFileError:
+        print('The file is empty')
+        return []
+    except csv.Error as e:
+        print(f"Malformed CSV file: {e}")
+        return []
+    except ValueError:
         return []

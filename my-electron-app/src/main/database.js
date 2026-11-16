@@ -27,6 +27,8 @@ db.pragma("foreign_keys = ON");
 db.exec(`
     CREATE TABLE IF NOT EXISTS restaurants (
         restaurant_id INTEGER PRIMARY KEY,
+        source TEXT NOT NULL,
+        source_id TEXT,
         name TEXT NOT NULL,
         cuisine TEXT,
         rating REAL,
@@ -36,6 +38,8 @@ db.exec(`
     CREATE TABLE IF NOT EXISTS meals (
         meal_id INTEGER PRIMARY KEY,
         restaurant_id INTEGER NOT NULL,
+        source TEXT NOT NULL,
+        source_id TEXT,
         name TEXT NOT NULL,
         description TEXT,
         price REAL,

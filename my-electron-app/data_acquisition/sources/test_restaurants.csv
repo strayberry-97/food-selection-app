@@ -1,4 +1,2 @@
-name,source,cuisine,rating
-Burger King,manual,Fast Food,4.5
-Dominos,manual,,
-Burger King,manual,excellent
+name,source,source_id,cuisine
+Test Restaurant,test_source,1,Italian

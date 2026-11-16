@@ -62,6 +62,9 @@ class MealRecord:
         if not self.restaurant_source_id.strip():
             raise ValueError('Restaurant source cannot be empty')
 
+        if not self.source.strip():
+            raise ValueError('Source cannot be empty')
+
         if self.price is not None:
             if type(self.price) is not Decimal:
                         raise TypeError('Price must be a Decimal')
@@ -77,12 +80,13 @@ class DataImportBatch:
     meals: List[MealRecord] = field(default_factory=list)
     created_at: datetime = field(default_factory=datetime.now)
     status: str = 'pending'
+    errors: List[str] = field(default_factory=list)
 
     def __post_init__(self):
         if not self.source.strip():
             raise ValueError('Source cannot be empty')
         
-        if self.status not in {'pending', 'approved', 'rejected'}:
+        if self.status not in {'pending', 'approved', 'rejected', 'invalid', 'imported'}:
             raise ValueError("Invalid batch status")
 
         for item in self.restaurants:

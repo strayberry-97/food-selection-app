@@ -1,0 +1,3 @@
+name,restaurant_source_id,source,source_id,description,price,currency,category,is_available
+Margherita Pizza,1,test_source,101,Classic pizza,250,TRY,Pizza,true
+Chicken Burger,1,test_source,102,Chicken burger,180,TRY,Burger,true

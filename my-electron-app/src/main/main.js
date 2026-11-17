@@ -21,11 +21,14 @@ function runPython(meals, history, declined, preferences) {
 
     const python = spawn('/opt/homebrew/bin/python3', [recommenderPath]);
 
-    python.stdin.write(JSON.stringify({ meals: meals, history: history, declined: declined, preferences: preferences }));
-    python.stdin.end();
-
     let output = '';
     let erroroutput = '';
+
+    python.stdin.on('error', (error) => {
+      console.error(`Error with stdin: ${error}`);
+      reject(error);
+    })
+
 
     python.stdout.on('data', (data) => {
       output += data.toString();
@@ -48,6 +51,14 @@ function runPython(meals, history, declined, preferences) {
       }
     });
 
+    python.stdin.write(JSON.stringify({ 
+      meals: meals, 
+      history: history, 
+      declined: declined, 
+      preferences: preferences }));
+    
+    python.stdin.end();
+
   });
 }
 
@@ -65,6 +76,7 @@ function handleAddHistory(mealId, rating = null) {
 }
 
 async function handleGetRecommendation() {
+
   const meals = handleGetMeals();
   const history = handleRetrieveMealHistory();
   const declined = handleDeclinedHistory();
@@ -72,9 +84,23 @@ async function handleGetRecommendation() {
 
   const result = await runPython(meals, history, declined, preferences);
 
-  const recommendation = JSON.parse(result);
-
-  return recommendation;
+  try{
+    const recommendation = JSON.parse(result);
+    if(recommendation === null){
+      return null;
+    }else if (typeof(recommendation) === 'object'
+                && Number.isInteger(recommendation.meal_id)
+                && typeof recommendation.name === 'string'
+                && recommendation.name.trim().length > 0){
+      return recommendation;
+    }else{
+      throw new TypeError('Invalid recommendation format');
+    }
+    
+  } catch (error) {
+    console.error("Invalid recommendation output: ", error);
+    throw error;
+  }
 }
 
 function handleGetMeals() {

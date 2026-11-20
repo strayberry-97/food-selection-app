@@ -86,10 +86,9 @@ def crawl(url):
     
 
 
-#url = "https://www.yemeksepeti.com/restaurant/zg4a/beykoz"
-url = "https://www.yemeksepeti.com/restaurant/g2yx/maydonoz-doner-g2yx"
+url = "https://www.yemeksepeti.com/restaurant/zg4a/beykoz"
+#url = "https://www.yemeksepeti.com/restaurant/g2yx/maydonoz-doner-g2yx"
 
 restaurant_data = crawl(url)
 
-with open('output.txt', "w", encoding="utf-8") as f:
-    print(restaurant_data['restaurant_name'], '\n\n', restaurant_data['menu'], file=f)
+

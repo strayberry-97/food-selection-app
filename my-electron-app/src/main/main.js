@@ -274,7 +274,7 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile(path.join(pagesPath, 'index.html'))
+  win.loadFile(path.join(pagesPath, 'import.html'))
 }
 
 ipcMain.on('minimize-window', (event) => {

@@ -25,3 +25,24 @@ if (preferencesButton) {
         window.location.href = 'preferences.html';
     });
 }
+
+const importButton = document.getElementById('importButton');
+if (importButton) {
+    importButton.addEventListener('click', () => {
+        window.location.href = 'import.html';
+    });
+}
+
+const databaseButton = document.getElementById('databaseButton');
+if (databaseButton) {
+    databaseButton.addEventListener('click', () => {
+        window.location.href = 'import.html';
+    });
+}
+
+const previewButton = document.getElementById('previewButton');
+if (previewButton) {
+    previewButton.addEventListener('click', () => {
+        window.location.href = 'import_preview.html';
+    });
+}

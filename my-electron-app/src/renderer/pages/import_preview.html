@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>What are we eating today?</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="crt">
+    <div class="title-bar">
+      <div class="window-buttons">
+        <button id="close">x</button>
+        <button id="minimize">–</button>
+      </div>      
+    </div>
+    <div class="window" id="windowImportPreview">
+      <aside id="sidebar"></aside>
+      <div id="import-preview-content">
+        <main id="import-preview-main-content">
+            <div id="menu">
+                <div id="menu-info">
+                    <span id="restaurant-name">Beykoz</span>
+                    <span id="subtext">13 categories ∙ Menu preview</span>
+                </div>
+                <div class="menu-categories" id="menu-categories">
+                    <div class="menu-category">
+                        <div class="title">
+                            Çorbalar
+                            <span>2 items</span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="menu-category-items">
+                            <div class="menu-category-item">
+                                Merçimek Çorbası<span>315 TRY</span>
+                            </div>
+                            <div class="menu-category-item">
+                                Dil Çorbası<span>570 TRY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-category">
+                        <div class="title">
+                            Çorbalar
+                            <span>2 items</span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="menu-category-items">
+                            <div class="menu-category-item">
+                                Merçimek Çorbası<span>315 TRY</span>
+                            </div>
+                            <div class="menu-category-item">
+                                Dil Çorbası<span>570 TRY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-category">
+                        <div class="title">
+                            Çorbalar
+                            <span>2 items</span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="menu-category-items">
+                            <div class="menu-category-item">
+                                Merçimek Çorbası<span>315 TRY</span>
+                            </div>
+                            <div class="menu-category-item">
+                                Dil Çorbası<span>570 TRY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-track" id="scrollTrack">
+                <div class="scroll-thumb" id="scrollThumb">
+            </div>
+      </div>
+        </main>
+        <button class="pick-button" id="importMenuButton">import menu</button>
+      </div>
+    </div>
+    <script src="../scripts/side_menu.js"></script>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/windowControls.js"></script>
+    <script src="../scripts/popup.js"></script>
+    <script src="../scripts/recommendations.js"></script>
+    <script src="../scripts/scrollbar.js"></script>
+  </body>
+</html>

@@ -121,7 +121,7 @@ button{
     height: 348px;
 }
 
-.sidebar{
+#sidebar{
     width: 197px;
     border: 1px solid #5D5D5D;
     background: #D9D9D9;
@@ -133,6 +133,9 @@ button{
     width: 173px;
     margin-right: 12px;
     border: 1px solid #5D5D5D;
+}
+#menuSecondPart{
+    margin-top: 22px ;
 }
 
 .menu button{
@@ -198,7 +201,7 @@ h1{
 
 #main-screen-menu-line{
     position: absolute;
-    top: 209px;
+    top: 210px;
     left: 17px;
 
 
@@ -648,4 +651,131 @@ h1{
 
 [hidden]{
     display: none !important;
+}
+
+#cross{
+    position: absolute;
+    top: 0;
+    left: 532px;
+    width: 141px;
+}
+
+#import-content{
+    width: 394px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+#import-main-content{
+    height: 209px;
+    background-color: #d9d9d9;
+    border: 1px solid #5D5D5D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#import-main-content span{
+    font-family: "Silkscreen";
+    font-size: 23px;
+}
+
+#import-main-content input{
+    width: 347px;
+    height: 25px;
+}
+
+#import-preview-content{
+    display: flex;
+    flex-direction: column;
+    width: 441px;
+    gap: 12px;
+}
+
+#import-preview-main-content{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    height: 280px;
+}
+
+#menu{
+    width: 406px;
+    background-color: #d9d9d9;
+    border: 1px solid #5D5D5D;
+    padding-inline: 23px;
+    padding-block: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+#menu-categories::-webkit-scrollbar{
+    display: none;
+}
+
+#importMenuButton{
+    width: 441px;
+}
+
+#windowImportPreview{
+    gap: 12px;
+}
+
+#restaurant-name{
+    font-family: "Silkscreen";
+    font-size: 23px;
+}
+
+#menu-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 12px;
+}
+
+#subtext{
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.title, .menu-category-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.line{
+    background-color: #5D5D5D;
+    height: 1px;
+}
+
+.title{
+    font-size: 17px;
+    font-weight: bold;
+    align-items: baseline;
+}
+
+.title span{
+    font-size: 14px;
+}
+
+.menu-category-item{
+    font-size: 16px;
+    align-items: baseline;
+    margin-block: 2px;
+}
+
+.menu-category-item span{
+    font-size: 13px;
+}
+
+.menu-category{
+    padding-bottom: 8px;
+}
+
+.menu-categories{
+    overflow-y: scroll;
 }

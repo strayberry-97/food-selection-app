@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>What are we eating today?</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="crt">
+    <div class="title-bar">
+      <div class="window-buttons">
+        <button id="close">x</button>
+        <button id="minimize">–</button>
+      </div>
+      <img src="../assets/images/cross.png" id="cross">
+      
+    </div>
+    <div class="window">
+      <aside id="sidebar">
+        
+      </aside>
+      <div id="import-content">
+        <main id="import-main-content">
+            <span>Restaurant page URL</span>
+            <input type="url">
+        </main>
+        <button class="pick-button" id="previewButton">preview menu</button>
+      </div>
+    </div>
+    <script src="../scripts/side_menu.js"></script>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/windowControls.js"></script>
+    <script src="../scripts/popup.js"></script>
+    <script src="../scripts/recommendations.js"></script>
+  </body>
+</html>
